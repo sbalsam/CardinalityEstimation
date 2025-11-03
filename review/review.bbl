@@ -1,0 +1,24 @@
+\begin{thebibliography}{}
+
+\bibitem[Chakraborty et~al., 2023]{cvm2023}
+Chakraborty, Vinodchandran, and Meel (2023).
+\newblock Distinct elements in streams: An algorithm for the (text) book.
+
+\bibitem[Flajolet and Martin, 1985]{fm85}
+Flajolet, P. and Martin, G.~N. (1985).
+\newblock Probabilistic counting algorithms for data base applications.
+
+\bibitem[Liu et~al., 2015]{Liu2015}
+Liu, Xu, Yu, Covinelli, and ZuZarte (2015).
+\newblock Cardinality estimation using neural networks.
+
+\bibitem[Schwabe and Acosta, 2024]{Schwabe2024}
+Schwabe and Acosta (2024).
+\newblock Cardinality estimation over knowledge graphs with embeddings and
+  graph neural networks.
+
+\bibitem[Woltmann et~al., 2019]{Woltmann2019}
+Woltmann, Hartmann, Thiele, Habich, and Lehner (2019).
+\newblock Cardinality estimation with local deep learning models.
+
+\end{thebibliography}
