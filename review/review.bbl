@@ -21,6 +21,11 @@ Flajolet, P. and Martin, G.~N. (1985).
 Liu, Xu, Yu, Covinelli, and ZuZarte (2015).
 \newblock Cardinality estimation using neural networks.
 
+\bibitem[Scheuermann and Mauve, 2007]{Scheuermann2007}
+Scheuermann and Mauve (2007).
+\newblock Near-optimal compression of probabilistic counting sketches for
+  networking applications.
+
 \bibitem[Schwabe and Acosta, 2024]{Schwabe2024}
 Schwabe and Acosta (2024).
 \newblock Cardinality estimation over knowledge graphs with embeddings and

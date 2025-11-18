@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.20)  18 NOV 2025 13:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.20)  18 NOV 2025 14:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -58,45 +58,23 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \Gm@layoutvoffset=\dimen147
 \Gm@dimlist=\toks17
 )
-(/usr/share/texlive/texmf-dist/tex/latex/sttools/flushend.sty
-Package: flushend 2021/10/04 v4.0 Balancing columns in twocolumn mode
-\flushend@@lastskip@a=\skip49
-\flushend@@lastskip@b=\skip50
-\flushend@@lastnode=\count196
-\var@@loop@iter=\count197
-\var@@temp@spread=\dimen148
-\var@@temp@a=\dimen149
-\var@@temp@loop=\dimen150
-\flushend@@page@rule=\dimen151
-\flushend@@varbox@lastpage=\box50
-\flushend@@varbox@a=\box51
-\flushend@@varbox@c=\box52
-\flushend@@tempbox@a=\box53
-\flushend@@tempbox@c=\box54
-\flushend@@floatbox=\box55
-\@viper=\box56
-\hold@viper=\box57
-\atColsBreak=\toks18
-\atColsEnd=\toks19
-\oldbreak@skip=\dimen152
-)
 (/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count198
-\float@exts=\toks20
-\float@box=\box58
-\@float@everytoks=\toks21
-\@floatcapt=\box59
+\c@float@type=\count196
+\float@exts=\toks18
+\float@box=\box50
+\@float@everytoks=\toks19
+\@floatcapt=\box51
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\@float@every@algorithm=\toks22
-\c@algorithm=\count199
+\@float@every@algorithm=\toks20
+\c@algorithm=\count197
 )
 (/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 Package: algpseudocode 
@@ -105,16 +83,16 @@ Package: algpseudocode
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count266
-\c@ALG@rem=\count267
-\c@ALG@nested=\count268
-\ALG@tlm=\skip51
-\ALG@thistlm=\skip52
-\c@ALG@Lnr=\count269
-\c@ALG@blocknr=\count270
-\c@ALG@storecount=\count271
-\c@ALG@tmpcounter=\count272
-\ALG@tmplength=\skip53
+\c@ALG@line=\count198
+\c@ALG@rem=\count199
+\c@ALG@nested=\count266
+\ALG@tlm=\skip49
+\ALG@thistlm=\skip50
+\c@ALG@Lnr=\count267
+\c@ALG@blocknr=\count268
+\c@ALG@storecount=\count269
+\c@ALG@tmpcounter=\count270
+\ALG@tmplength=\skip51
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (/usr/share/texmf/tex/latex/lm/lmodern.sty
@@ -157,24 +135,24 @@ Package: microtype 2021/12/10 v3.0b Micro-typographical refinements (RS)
 
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count273
+\etb@tempcnta=\count271
 )
-\MT@toks=\toks23
-\MT@count=\count274
-\MT@tempbox=\box60
+\MT@toks=\toks21
+\MT@count=\count272
+\MT@tempbox=\box52
 LaTeX Info: Redefining \leftprotrusion on input line 1010.
 LaTeX Info: Redefining \rightprotrusion on input line 1018.
 LaTeX Info: Redefining \textls on input line 1173.
-\MT@outer@kern=\dimen153
+\MT@outer@kern=\dimen148
 LaTeX Info: Redefining \textmicrotypecontext on input line 1759.
-\MT@listname@count=\count275
+\MT@listname@count=\count273
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 File: microtype-pdftex.def 2021/12/10 v3.0b Definitions specific to pdftex (RS)
 
 LaTeX Info: Redefining \lsstyle on input line 897.
 LaTeX Info: Redefining \lslig on input line 897.
-\MT@outer@space=\skip54
+\MT@outer@space=\skip52
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 
@@ -198,8 +176,8 @@ Package graphics Info: Driver file: pdftex.def on input line 107.
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen154
-\Gin@req@width=\dimen155
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
 )
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
 2.
@@ -209,8 +187,8 @@ File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count276
-\l__pdf_internal_box=\box61
+\l__color_backend_stack_int=\count274
+\l__pdf_internal_box=\box53
 )
 (./review.aux)
 \openout1 = `review.aux'.
@@ -285,17 +263,17 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count277
-\scratchdimen=\dimen156
-\scratchbox=\box62
-\nofMPsegments=\count278
-\nofMParguments=\count279
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count280
-\MPscratchDim=\dimen157
-\MPnumerator=\count281
-\makeMPintoPDFobject=\count282
-\everyMPtoPDFconversion=\toks25
+\scratchcounter=\count275
+\scratchdimen=\dimen151
+\scratchbox=\box54
+\nofMPsegments=\count276
+\nofMParguments=\count277
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count278
+\MPscratchDim=\dimen152
+\MPnumerator=\count279
+\makeMPintoPDFobject=\count280
+\everyMPtoPDFconversion=\toks23
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -330,14 +308,25 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 24.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 73.
+(Font)              <9> on input line 48.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 73.
+(Font)              <6> on input line 48.
+
+Underfull \vbox (badness 1412) has occurred while \output is active []
+
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Overfull \hbox (82.81624pt too wide) in paragraph at lines 157--158
+Underfull \hbox (badness 10000) in paragraph at lines 182--183
+[]\OT1/lmr/m/n/9 (+20) - Com-pressed FM and HLL
+ []
+
+
+Underfull \vbox (badness 2302) has occurred while \output is active []
+
+
+Overfull \hbox (82.81624pt too wide) in paragraph at lines 195--196
 \OT1/lmr/m/n/9 (-20) https://topoer-seu.github.io/PersonalPage/csqjxiao[]files/
 papers/INFOCOM17.pdf 
  []
@@ -348,46 +337,34 @@ Underfull \hbox (badness 2080) in paragraph at lines 8--10
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--32
+Underfull \hbox (badness 10000) in paragraph at lines 35--37
 []\OT1/lmr/m/n/9 (+20) Woltmann, Hart-mann, Thiele,
  []
 
-)
-- LAST -
-Extra skip:0.0pt
-Left:417.44164pt/2.25pt
-Right:422.48721pt/1.75pt
-Split: 428.74564pt
-Output:428.74564pt
-Pageshrink: 16.0pt
-Pagestretch: 28.77498pt
-@colht:632.3625pt
-FLUSHEND [output]: 428.74564pt
-FLUSHEND [leftcolumn badness]: 18
-FUSHEND [rightcolumn badness]: 1
- [2] (./review.aux) ) 
+) [2] (./review.aux) ) 
 Here is how much of TeX's memory you used:
- 4972 strings out of 480121
- 84290 string characters out of 5892160
- 426882 words of memory out of 5000000
- 22793 multiletter control sequences out of 15000+600000
- 515004 words of font info for 99 fonts, out of 8000000 for 9000
+ 4852 strings out of 480121
+ 81876 string characters out of 5892160
+ 422414 words of memory out of 5000000
+ 22681 multiletter control sequences out of 15000+600000
+ 511874 words of font info for 96 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 55i,8n,62p,999b,318s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
-hare/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmsc.enc}</usr/share/texmf/
-fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.
-pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></
-usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share
-/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb>
-Output written on review.pdf (2 pages, 233488 bytes).
+ 55i,8n,62p,999b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/
+share/texmf/fonts/enc/dvips/lm/lm-rmsc.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf
+/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9
+.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmmi5.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb><
+/usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmsy9.pfb>
+Output written on review.pdf (2 pages, 238917 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
- 43 compressed objects within 1 object stream
+ 75 PDF objects out of 1000 (max. 8388607)
+ 46 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26625 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 24577 words of extra memory for PDF output out of 24883 (max. 10000000)
 

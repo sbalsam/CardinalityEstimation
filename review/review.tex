@@ -1,6 +1,6 @@
 \documentclass[twocolumn, 9pt]{extarticle}
 \usepackage[top=1in, bottom=1.25in, left=0.8in, right=0.8in]{geometry}
-\usepackage{flushend} 
+%\usepackage{flushend} 
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 
@@ -32,35 +32,45 @@ for the Count Distinct Problem...
 
 The cardinality estimation problem or count-distinct problem is about finding
 the number of distinct elements in a data stream with repeated elements. These
-elements could be url's, unique users, sensor data or IP addresses passing
+elements could be URL's, unique users, sensor data or IP addresses passing
 through a data stream. A simple solution would be to use a list and add an item
 to this list each time we encounter an unseen item. With this approach we can
 give an exact answer to the query, how many distinct elements have been
 seen. Unfortunately if millions of distinct elements are present in a data
 stream, with this approach, we will soon hit storage boundaries and the
-performance will detoriate. 
+performance will deteriorate. 
 
 As we often do not need an exact answer, streaming algorithms have been
 developed, that give an approximation that is mostly good enough and bound to a
 fixed storage size. There different approaches to solve this problem. Sampling
 techniques are used as an estimate by sampling a subset of items in the set and
-use the subset as estimator, e.g the CVM algorithm by Chakraborty et al.
-\cite{cvm2023}. While sampling methods generally give a good estimate, they can
-fail in certain situations. If rare elements are not in the sampled set, they
-would not be counted and we would underestimate. For database optimization,
-machine learning techniques have been used recently for cardinality estimation
-\cite{Liu2015, Woltmann2019, Schwabe2024}. 
+use the subset as estimator, e.g. the CVM algorithm by Chakraborty et al.
+\cite{cvm2023}. In its simplest form if we take a sample size of $N_0$ for a
+set of size $N$, we get an estimate by counting the distinct items times
+$N/N_0$. While sampling methods generally give a good estimate, they can fail
+in certain situations. If rare elements are not in the sampled set, they would
+not be counted and we would underestimate. Another problem is replicating
+structures in the data. If we sample every 10th item, and accidentally every
+10th item is different, while other items are mostly the same, we would
+overestimate. For database optimization, machine learning techniques have been
+used recently for cardinality estimation \cite{Liu2015, Woltmann2019,
+Schwabe2024}. 
 
-The technique I want to focus on in this paper are sketch techniques that
-implement a certain data structure and an accompanying algorithm to store
-information efficient for cardinality estimation.
+The technique I want to focus on in this paper are stochastic sketch techniques
+that implement a certain data structure and an accompanying algorithm to store
+information efficient for cardinality estimation. I will follow the development
+chronologically from the first algorithm of Flajolet and Martin in 1985 
+\cite{fm85}, to the HyperLogLog algorithm in 2007.
 
-\section{Probabilistic Counting with Stochastic Averaging}
+TODO: Give an overview of the used techniques. Tell what I want to say and
+what I leave out.
 
-- Overview of PCSA
-- Problem description
+%\section{Probabilistic Counting with Stochastic Averaging}
 
-\subsection{Flajolet and Martin}
+%- Overview of PCSA
+%- Problem description
+
+\section{Flajolet and Martin}
 
 Before the advent of the internet there were not many data stream applications
 as we have today. But databases existed and began to grow in size. As table
@@ -79,8 +89,8 @@ the second last bit and so on. That means, based on the number of the rightmost
 algorithm as described in Algorithm \ref{alg:fm85-add} to add set the position
 of the rightmost '1' in the bitmap.
 
-Flajolet and Martin found that they get better result, if multiple bins of
-bitmaps are used. With a higher number of bins (the value of $nmap$) we use for
+Flajolet and Martin found that they get better result, if multiple ($m$) bins of
+bitmaps are used. With a higher number of bins we use for
 the average, the estimation quality raises, but at the same time we need more
 memory to store the bitmap. They use the hash value to decide the bin (by using
 the modulo operation) and save the rightmost '1' of the binary representation
@@ -90,15 +100,34 @@ in this bin.
 \caption{Adding an item in the Flajolet-Martin algorithm.}
 	\label{alg:fm85-add}
 	\begin{algorithmic}[1]
+		\State $m \gets $ Number of bins
 		\Function{$\rho$}{$val$}
 			\State \Return position of the first 1 bit in val.
 		\EndFunction
 
 		\Function{addItem}{$x$}
 			\State $hashedx \gets hash(x)$
-			\State $\alpha \gets hashedx \textrm{ mod } nmap$
-			\State $index \gets \rho(hashedx \textrm{ div } nmap)$
+			\State $\alpha \gets hashedx \textrm{ mod } m$
+			\State $index \gets \rho(hashedx \textrm{ div } m)$
 			\State $BITMAP[\alpha][index]=1$
+		\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Get an estimate in the Flajolet-Martin algorithm.}
+	\label{alg:fm85-query}
+	\begin{algorithmic}[1]
+		\Function{query}{}
+			\State $\rho \gets 0.77351$
+			\State $\max \gets 32$ \Comment{32 bit per bin}
+			\For{$i:=0$ to $m-1$}
+				\While{$BITMAP[i][R]==1$ and $R<max$}
+					\State $R \gets R+1$
+					\State $S \gets S+R$
+				\EndWhile
+			\EndFor
+			\State \Return $int(m / \rho * 2 ^{S/nmap})$
 		\EndFunction
 \end{algorithmic}
 \end{algorithm}
@@ -110,41 +139,50 @@ in the bitmap is
 $$
 \mathbf{E}(R) \approx \log_{2}{\rho n}
 $$
+We sum up the bins and as each bin only counted $1/m$ items,
+we estimate the number with 
+$$
+\frac{1}{\rho} m \cdot 2^{\frac{S}{m}}.
+$$
 
-\begin{algorithm}
-\caption{Get an estimate in the Flajolet-Martin algorithm.}
-	\label{alg:fm85-query}
-	\begin{algorithmic}[1]
-		\Function{query}{}
-			\State $\rho \gets 0.77351$
-			\State $\max \gets 32$ \Comment{32 bit per bin}
-			\For{$i:=0$ to $nmap-1$}
-				\While{$BITMAP[i][R]==1$ and $R<max$}
-					\State $R \gets R+1$
-					\State $S \gets S+R$
-				\EndWhile
-			\EndFor
-			\State \Return $int(nmap / \rho * 2 ^{S/nmap})$
-		\EndFunction
-\end{algorithmic}
-\end{algorithm}
+The results for this algorithm are shown in Figure 1. The memory consumption
+for the algorithm is $m*32$. That means with $m=256$, we can produce estimates
+with about 5\% standard error and have to use 
+$256 \cdot 32=8192 \textrm{ bit } = 1 \textrm{kB}$ of memory to safely 
+count up to 100 million items, before the quality decreases.
 
-% check https://book.moa.cms.waikato.ac.nz/chapter_4.html/
-- Compressed (Scheuermann)
+Figure 1 showing mean, std.dev over a log scale
+
+Discuss the problem with lower values and how to solve this (count items directly
+up to a certain number before using FM).
+Discuss connection between $m$ and the estimation quality.
+
 
 \section{HyperLogLog, 2007}
 
 A first refinement of the Flajolet \& Martin algorithm came in 2003 by Durand
 and Flajolet \cite{Durand2003}. Later in 2007 it was further refined
-\cite{Flajolet2007} to improve the accuracy even further. 
+\cite{Flajolet2007} to improve the accuracy even further to an algorithm
+called HyperLogLog.
 
 The idea is quite simple. When we try to estimate the number of items, in the
 FM85 algorithm, we look for the first '0' in the bitmap. All the other '1'
 before and any bits after this position are not used. So instead of saving the
 complete bitmap, it should be enough to just save the maximum number of ones
-from the left. In addition since we have a maximum of 32 bits originally in the
+from the left. In addition, since we have a maximum of 32 bits originally in the
 bitmap, we only need 5 bits ($2^5=32$) for this number to be stored for each
 bin. This is an additional memory reduction.
+
+- splitting the hash function to fill multiple buckets with a subset of 
+bits of the hash.
+- only use the smallest 70\% of values (throw away high outliers)
+- harmonic mean
+
+
+- Compressed FM and HLL \cite{Scheuermann2007}
+
+% read this: https://towardsdatascience.com/hyperloglog-a-simple-but-powerful-algorithm-for-data-scientists-aed50fe47869/
+
 
 \section{HyperLogLog++, 2013}
 
@@ -159,6 +197,7 @@ https://topoer-seu.github.io/PersonalPage/csqjxiao\_files/papers/INFOCOM17.pdf
 
 \section{Conclusion}
 
+
 \begin{table}[htb]
 \label{tbl:methods}
 \caption{Table showing the different methods...}
@@ -166,7 +205,7 @@ https://topoer-seu.github.io/PersonalPage/csqjxiao\_files/papers/INFOCOM17.pdf
 \begin{tabular}{ l l l }
 	Algorithm & Memory & Comment \\ 
 \hline
-	Flajolet \& Martin & 23 & clever \\
+	FM85 & 23 & clever \\
 	HLL & 45 & here \\
 	HLL++ & 23 & 23 \\ 
 	ExHLL & 35 & fsd \\ 

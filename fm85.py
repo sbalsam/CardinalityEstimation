@@ -1,3 +1,5 @@
+import numpy as np
+
 # -*- coding: utf-8 -*-
 """ 
 Implementation of an algorithm to estimate the number 
@@ -48,18 +50,19 @@ class FM85:
         self.bitsets[bin_num][count] = 1
 
 if __name__ == "__main__":
-    runs = 40
+    runs = 30
     vals = []
     fm85 = FM85(16)
-
+    testvalues = np.logspace(0, 6, num=200, dtype=int)
+    print(testvalues)
     for run in range(1,runs+1):
         fm85.resetBits()
         avg = 0
         num = 0
         k = 0
-        for i in range(1,10000):
+        for i in range(1,100000):
             fm85.add("item"+str(i)+str(run))
-            if i % 1000 == 0:
+            if i in testvalues:
                 if run == 1:
                     vals.append(0)
                 num += 1
