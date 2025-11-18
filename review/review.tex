@@ -40,19 +40,18 @@ seen. Unfortunately if millions of distinct elements are present in a data
 stream, with this approach, we will soon hit storage boundaries and the
 performance will detoriate. 
 
-As we often do not need an exact answer, streaming algorithms have been 
-developed, that give an approximation that is mostly good enough and bound to 
-a fixed storage size. There different approaches to solve this problem.
-Sampling techniques are used as an estimate by sampling a subset of
-items in the set and use the subset as estimator, e.g the CVM algorithm
-by Chakraborty et al. \cite{cvm2023}. While sampling methods generally
-give a good estimate, they can fail in certain situations. If rare elements
-are not in the sampled set, they would not be counted and we would 
-underestimate. For database optimization machine
-learning techniques have been used recently for cardinality estimation
+As we often do not need an exact answer, streaming algorithms have been
+developed, that give an approximation that is mostly good enough and bound to a
+fixed storage size. There different approaches to solve this problem. Sampling
+techniques are used as an estimate by sampling a subset of items in the set and
+use the subset as estimator, e.g the CVM algorithm by Chakraborty et al.
+\cite{cvm2023}. While sampling methods generally give a good estimate, they can
+fail in certain situations. If rare elements are not in the sampled set, they
+would not be counted and we would underestimate. For database optimization,
+machine learning techniques have been used recently for cardinality estimation
 \cite{Liu2015, Woltmann2019, Schwabe2024}. 
 
-The technique I want to focus in this paper are sketch techniques that
+The technique I want to focus on in this paper are sketch techniques that
 implement a certain data structure and an accompanying algorithm to store
 information efficient for cardinality estimation.
 
@@ -61,45 +60,121 @@ information efficient for cardinality estimation.
 - Overview of PCSA
 - Problem description
 
-\subsection{Flajolet \& Martin}
+\subsection{Flajolet and Martin}
 
-In the 80's streaming problems were not the problems, we have today, as there
-simply were not that many data streams. But databases existed and began to
-grow in size. As table sizes grew, evaluation strategies became important,
-how to handle such big data tables for join operations. Query optimizers
-were developed that could find the optimal strategy.
+Before the advent of the internet there were not many data stream applications
+as we have today. But databases existed and began to grow in size. As table
+sizes grew, evaluation strategies became important, how to handle such big data
+tables for join operations. Query optimizers were developed that could find the
+optimal strategy.
 
-In this context Flajolet and Martin developed a method to estimate
-the number of distinct items in a set in a space efficient way\cite{fm85}.
+In this context Flajolet and Martin developed in 1985 a method to estimate the
+number of distinct items in a set in a space efficient way\cite{fm85}. The idea
+behind the method is to use a hash function that maps $n$ items uniformly to
+integers. If we look at the binary representation of these integers, and check
+the longest runs of zeros from the right, in about $n/2$ cases, we have a '1'
+already in the first bit from the right. In about $n/4$ cases, we have a '1' in
+the second last bit and so on. That means, based on the number of the rightmost
+'1', we can estimate the number of items. When we add an item, we use the
+algorithm as described in Algorithm \ref{alg:fm85-add} to add set the position
+of the rightmost '1' in the bitmap.
+
+Flajolet and Martin found that they get better result, if multiple bins of
+bitmaps are used. With a higher number of bins (the value of $nmap$) we use for
+the average, the estimation quality raises, but at the same time we need more
+memory to store the bitmap. They use the hash value to decide the bin (by using
+the modulo operation) and save the rightmost '1' of the binary representation
+in this bin.
 
 \begin{algorithm}
-\caption{The Flajolet Martin algorithm.}
-	\label{alg:fm85}
+\caption{Adding an item in the Flajolet-Martin algorithm.}
+	\label{alg:fm85-add}
 	\begin{algorithmic}[1]
-\Require $n \geq 0$
-\Ensure $y = x^n$
-\State $y \gets 1$
-\State $X \gets x$
-\State $N \gets n$
-\While{$N \neq 0$}
-\If{$N$ is even}
-    \State $X \gets X \times X$
-    \State $N \gets \frac{N}{2}$  \Comment{This is a comment}
-\ElsIf{$N$ is odd}
-    \State $y \gets y \times X$
-    \State $N \gets N - 1$
-\EndIf
-\EndWhile
+		\Function{$\rho$}{$val$}
+			\State \Return position of the first 1 bit in val.
+		\EndFunction
 
+		\Function{addItem}{$x$}
+			\State $hashedx \gets hash(x)$
+			\State $\alpha \gets hashedx \textrm{ mod } nmap$
+			\State $index \gets \rho(hashedx \textrm{ div } nmap)$
+			\State $BITMAP[\alpha][index]=1$
+		\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+When an estimate is needed, an average of the leftmost zeros are used,
+as shown in algorithm \ref{alg:fm85-query}. The magic number $\rho=0.77351$
+is used, as the expected Value of R - the position of leftmost zero 
+in the bitmap is 
+$$
+\mathbf{E}(R) \approx \log_{2}{\rho n}
+$$
+
+\begin{algorithm}
+\caption{Get an estimate in the Flajolet-Martin algorithm.}
+	\label{alg:fm85-query}
+	\begin{algorithmic}[1]
+		\Function{query}{}
+			\State $\rho \gets 0.77351$
+			\State $\max \gets 32$ \Comment{32 bit per bin}
+			\For{$i:=0$ to $nmap-1$}
+				\While{$BITMAP[i][R]==1$ and $R<max$}
+					\State $R \gets R+1$
+					\State $S \gets S+R$
+				\EndWhile
+			\EndFor
+			\State \Return $int(nmap / \rho * 2 ^{S/nmap})$
+		\EndFunction
 \end{algorithmic}
 \end{algorithm}
 
 % check https://book.moa.cms.waikato.ac.nz/chapter_4.html/
 - Compressed (Scheuermann)
 
-\section{HyperLogLog}
+\section{HyperLogLog, 2007}
+
+A first refinement of the Flajolet \& Martin algorithm came in 2003 by Durand
+and Flajolet \cite{Durand2003}. Later in 2007 it was further refined
+\cite{Flajolet2007} to improve the accuracy even further. 
+
+The idea is quite simple. When we try to estimate the number of items, in the
+FM85 algorithm, we look for the first '0' in the bitmap. All the other '1'
+before and any bits after this position are not used. So instead of saving the
+complete bitmap, it should be enough to just save the maximum number of ones
+from the left. In addition since we have a maximum of 32 bits originally in the
+bitmap, we only need 5 bits ($2^5=32$) for this number to be stored for each
+bin. This is an additional memory reduction.
+
+\section{HyperLogLog++, 2013}
+
+\section{LogLogBeta, 2016}
+
+\section{ExtendedHyperLogLog, 2023}
+https://arxiv.org/pdf/2106.06525
+
+\section{HLL-TailCut, 2023}
+https://topoer-seu.github.io/PersonalPage/csqjxiao\_files/papers/INFOCOM17.pdf
+
 
 \section{Conclusion}
+
+\begin{table}[htb]
+\label{tbl:methods}
+\caption{Table showing the different methods...}
+\begin{center}
+\begin{tabular}{ l l l }
+	Algorithm & Memory & Comment \\ 
+\hline
+	Flajolet \& Martin & 23 & clever \\
+	HLL & 45 & here \\
+	HLL++ & 23 & 23 \\ 
+	ExHLL & 35 & fsd \\ 
+	HLL-TailCut & 23 & sdf 
+\end{tabular}
+\end{center}
+\end{table}
+
 
 \bibliographystyle{apalike}
 \bibliography{bibfile}

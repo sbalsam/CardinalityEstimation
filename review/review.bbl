@@ -4,6 +4,15 @@
 Chakraborty, Vinodchandran, and Meel (2023).
 \newblock Distinct elements in streams: An algorithm for the (text) book.
 
+\bibitem[Durand and Flajolet, 2003]{Durand2003}
+Durand and Flajolet (2003).
+\newblock Loglog counting of large cardinalities.
+
+\bibitem[Flajolet et~al., 2007]{Flajolet2007}
+Flajolet, Fusy, Gandouet, and Meunier (2007).
+\newblock Hyperloglog: the analysis of a near-optimal cardinality estimation
+  algorithm.
+
 \bibitem[Flajolet and Martin, 1985]{fm85}
 Flajolet, P. and Martin, G.~N. (1985).
 \newblock Probabilistic counting algorithms for data base applications.

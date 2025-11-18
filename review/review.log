@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.20)  3 NOV 2025 14:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.20)  18 NOV 2025 13:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -330,52 +330,64 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 24.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 79.
+(Font)              <9> on input line 73.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 79.
- (./review.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 21--23
+(Font)              <6> on input line 73.
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]
+Overfull \hbox (82.81624pt too wide) in paragraph at lines 157--158
+\OT1/lmr/m/n/9 (-20) https://topoer-seu.github.io/PersonalPage/csqjxiao[]files/
+papers/INFOCOM17.pdf 
+ []
+
+(./review.bbl
+Underfull \hbox (badness 2080) in paragraph at lines 8--10
+[]\OT1/lmr/m/n/9 (+20) Durand and Fla-jo-let (2003).
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
 []\OT1/lmr/m/n/9 (+20) Woltmann, Hart-mann, Thiele,
  []
 
 )
 - LAST -
 Extra skip:0.0pt
-Left:515.51836pt/0.0pt
-Right:520.2667pt/1.75pt
-Split: 518.76752pt
-Output:518.76752pt
-Pageshrink: 16.77498pt
-Pagestretch: 34.19992pt
-@colht:529.96863pt
-FLUSHEND [output]: 518.76752pt
-FLUSHEND [leftcolumn badness]: 0
-FUSHEND [rightcolumn badness]: 0
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
-
-
-] (./review.aux) ) 
+Left:417.44164pt/2.25pt
+Right:422.48721pt/1.75pt
+Split: 428.74564pt
+Output:428.74564pt
+Pageshrink: 16.0pt
+Pagestretch: 28.77498pt
+@colht:632.3625pt
+FLUSHEND [output]: 428.74564pt
+FLUSHEND [leftcolumn badness]: 18
+FUSHEND [rightcolumn badness]: 1
+ [2] (./review.aux) ) 
 Here is how much of TeX's memory you used:
- 4913 strings out of 480121
- 83576 string characters out of 5892160
- 431814 words of memory out of 5000000
- 22769 multiletter control sequences out of 15000+600000
- 505008 words of font info for 80 fonts, out of 8000000 for 9000
+ 4972 strings out of 480121
+ 84290 string characters out of 5892160
+ 426882 words of memory out of 5000000
+ 22793 multiletter control sequences out of 15000+600000
+ 515004 words of font info for 99 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 55i,8n,62p,999b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/te
-xmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ma
-thsy.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/f
-onts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/typ
-e1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/
-share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmsy9.pfb>
-Output written on review.pdf (1 page, 198442 bytes).
+ 55i,8n,62p,999b,318s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmsc.enc}</usr/share/texmf/
+fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb>
+Output written on review.pdf (2 pages, 233488 bytes).
 PDF statistics:
- 61 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
+ 70 PDF objects out of 1000 (max. 8388607)
+ 43 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 20481 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 26625 words of extra memory for PDF output out of 29859 (max. 10000000)
 
