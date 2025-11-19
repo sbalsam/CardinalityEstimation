@@ -1,9 +1,14 @@
 \documentclass[twocolumn, 9pt]{extarticle}
 \usepackage[top=1in, bottom=1.25in, left=0.8in, right=0.8in]{geometry}
+%\documentclass{article}
+%\usepackage[top=1.5in, bottom=1.25in, left=1.5in, right=1.5in]{geometry}
+
+
 %\usepackage{flushend} 
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black, linktocpage}
 % -- Single column version
 %\documentclass[11pt]{article}
 %\usepackage[top=1in, bottom=1in, left=1.5in, right=1.5in]{geometry}
@@ -82,19 +87,21 @@ In this context Flajolet and Martin developed in 1985 a method to estimate the
 number of distinct items in a set in a space efficient way\cite{fm85}. The idea
 behind the method is to use a hash function that maps $n$ items uniformly to
 integers. If we look at the binary representation of these integers, and check
-the longest runs of zeros from the right, in about $n/2$ cases, we have a '1'
-already in the first bit from the right. In about $n/4$ cases, we have a '1' in
-the second last bit and so on. That means, based on the number of the rightmost
-'1', we can estimate the number of items. When we add an item, we use the
-algorithm as described in Algorithm \ref{alg:fm85-add} to add set the position
-of the rightmost '1' in the bitmap.
+the longest runs of zeros, in about $n/2$ cases, we have a '0' at any position.
+In about $n/4$ cases, we have two '0's consecutively. With a chance of $1/8$ we
+have three '0' in a row, and so on. That means if we start for example at the
+right and count the zeros for each element in the stream, based on maximal
+number we have seen so far, we can estimate the number of items. When we add an
+item, we use the algorithm as described in Algorithm \ref{alg:fm85-add} to add
+set the position of the rightmost '1' in a bitmap.
 
-Flajolet and Martin found that they get better result, if multiple ($m$) bins of
-bitmaps are used. With a higher number of bins we use for
-the average, the estimation quality raises, but at the same time we need more
-memory to store the bitmap. They use the hash value to decide the bin (by using
-the modulo operation) and save the rightmost '1' of the binary representation
-in this bin.
+Flajolet and Martin found that they get better result, if an average of
+multiple ($m$) bins of bitmaps are used. This is equivalent with running an
+experiment multiple times to get results closer to the expected value. With a
+higher number of bins available for the average, the estimation quality raises,
+but at the same time more memory to store the bitmap is needed. They use the
+hash value to decide the bin (by using the modulo operation) and save the
+rightmost '1' of the binary representation in this bin.
 
 \begin{algorithm}
 \caption{Adding an item in the Flajolet-Martin algorithm.}
@@ -119,13 +126,14 @@ in this bin.
 	\label{alg:fm85-query}
 	\begin{algorithmic}[1]
 		\Function{query}{}
-			\State $\rho \gets 0.77351$
+			\State $\rho \gets 0.77351, S \gets 0$
 			\State $\max \gets 32$ \Comment{32 bit per bin}
 			\For{$i:=0$ to $m-1$}
-				\While{$BITMAP[i][R]==1$ and $R<max$}
-					\State $R \gets R+1$
-					\State $S \gets S+R$
+				\State $j \gets 0$
+				\While{$BITMAP[i][j]==1$ and $j<max$}
+					\State $j \gets j+1$
 				\EndWhile
+				\State $S \gets S+j$
 			\EndFor
 			\State \Return $int(m / \rho * 2 ^{S/nmap})$
 		\EndFunction
@@ -165,11 +173,11 @@ and Flajolet \cite{Durand2003}. Later in 2007 it was further refined
 \cite{Flajolet2007} to improve the accuracy even further to an algorithm
 called HyperLogLog.
 
-The idea is quite simple. When we try to estimate the number of items, in the
-FM85 algorithm, we look for the first '0' in the bitmap. All the other '1'
+When we try to estimate the number of items, in the
+FM85 algorithm, we look for the maximum number of '1' in the bitmap. All the other '1'
 before and any bits after this position are not used. So instead of saving the
-complete bitmap, it should be enough to just save the maximum number of ones
-from the left. In addition, since we have a maximum of 32 bits originally in the
+complete bitmap, it should be enough to just save the maximum number. 
+In addition, since we have a maximum of 32 bits originally in the
 bitmap, we only need 5 bits ($2^5=32$) for this number to be stored for each
 bin. This is an additional memory reduction.
 
