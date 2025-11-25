@@ -5,6 +5,7 @@
 
 
 %\usepackage{flushend} 
+\usepackage{subcaption}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{hyperref}
@@ -140,10 +141,10 @@ rightmost '1' of the binary representation in this bin.
 \end{algorithmic}
 \end{algorithm}
 
-When an estimate is needed, an average of the leftmost zeros are used,
-as shown in algorithm \ref{alg:fm85-query}. The magic number $\rho=0.77351$
-is used, as the expected Value of R - the position of leftmost zero 
-in the bitmap is 
+When an estimate is needed, an average of the leftmost zeros over all bins 
+are used, as shown in algorithm \ref{alg:fm85-query}. The magic number 
+$\rho=0.77351$ is used, as the expected Value of R - the position of 
+leftmost zero in the bitmap is 
 $$
 \mathbf{E}(R) \approx \log_{2}{\rho n}
 $$
@@ -159,12 +160,45 @@ with about 5\% standard error and have to use
 $256 \cdot 32=8192 \textrm{ bit } = 1 \textrm{kB}$ of memory to safely 
 count up to 100 million items, before the quality decreases.
 
-Figure 1 showing mean, std.dev over a log scale
+\begin{figure*}[htb]
+	\begin{subfigure}{.33\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{fm85_16.pdf}
+		\caption{m=16}
+		\label{fig:fm85_16}
+	\end{subfigure}%
+	\begin{subfigure}{.33\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{fm85_64.pdf}
+		\caption{m=64}
+		\label{fig:fm85_64}
+	\end{subfigure}
+	\begin{subfigure}{.33\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{fm85_265.pdf}
+		\caption{m=265}
+		\label{fig:fm85_265}
+	\end{subfigure}
 
-Discuss the problem with lower values and how to solve this (count items directly
-up to a certain number before using FM).
-Discuss connection between $m$ and the estimation quality.
+	\caption{The percentage of deviation from the true
+	number of items over 30 runs (in grey) are shown (m=265) 
+	up to one million items. The red line shows the average 
+	over the 30 runs.}
+	\label{fig:fm85}
+\end{figure*}
 
+Figure \ref{fig:fm85} shows the results of my implementation of the FM
+algorithm of a cardinality up to one million items. We can see that the
+algorithm results in strong overestimation below 1500 items for $m=265$. After
+that, we only have a deviation on average of about 1 percent of the true number
+of items. The solution for numbers below 1500 items is simply to count these
+items exactly in an array, and only use Flajolet \& Martin above a certain
+number.
+
+The value of $m$ - the number of bins is important for accuracy. With $m=265$,
+Flajolet and Marin report a bias of 0.0073 and a standard error of 4.65\%.
+For $m=16$, we have a bias of 1.0104, about the same, but a standard error 
+of 19.63\%. These numbers match my own experiments.
 
 \section{HyperLogLog, 2007}
 
