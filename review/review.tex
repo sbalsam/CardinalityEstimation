@@ -109,14 +109,14 @@ rightmost '1' of the binary representation in this bin.
 	\label{alg:fm85-add}
 	\begin{algorithmic}[1]
 		\State $m \gets $ Number of bins
-		\Function{$\rho$}{$val$}
+		\Function{$\phi$}{$val$}
 			\State \Return position of the first 1 bit in val.
 		\EndFunction
 
 		\Function{addItem}{$x$}
 			\State $hashedx \gets hash(x)$
 			\State $\alpha \gets hashedx \textrm{ mod } m$
-			\State $index \gets \rho(hashedx \textrm{ div } m)$
+			\State $index \gets \phi(hashedx \textrm{ div } m)$
 			\State $BITMAP[\alpha][index]=1$
 		\EndFunction
 \end{algorithmic}
@@ -126,6 +126,7 @@ rightmost '1' of the binary representation in this bin.
 \caption{Get an estimate in the Flajolet-Martin algorithm.}
 	\label{alg:fm85-query}
 	\begin{algorithmic}[1]
+		\State $m \gets $ Number of bins
 		\Function{query}{}
 			\State $\rho \gets 0.77351, S \gets 0$
 			\State $\max \gets 32$ \Comment{32 bit per bin}
@@ -136,7 +137,7 @@ rightmost '1' of the binary representation in this bin.
 				\EndWhile
 				\State $S \gets S+j$
 			\EndFor
-			\State \Return $int(m / \rho * 2 ^{S/nmap})$
+			\State \Return $int(m / \rho \cdot 2 ^{S/m})$
 		\EndFunction
 \end{algorithmic}
 \end{algorithm}
@@ -155,7 +156,7 @@ $$
 $$
 
 The results for this algorithm are shown in Figure 1. The memory consumption
-for the algorithm is $m*32$. That means with $m=256$, we can produce estimates
+for the algorithm is $m \cdot 32$. That means with $m=256$, we can produce estimates
 with about 5\% standard error and have to use 
 $256 \cdot 32=8192 \textrm{ bit } = 1 \textrm{kB}$ of memory to safely 
 count up to 100 million items, before the quality decreases.
