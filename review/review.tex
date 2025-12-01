@@ -5,6 +5,7 @@
 
 
 %\usepackage{flushend} 
+\usepackage{amssymb}
 \usepackage{subcaption}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
@@ -25,13 +26,15 @@
 \author{Sebastian Balsam}
 \date{\today}
 
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
 In this paper I want to give an overview of different solutions
-for the Count Distinct Problem...
+	for the Count Distinct Problem...\todo{Add more content.}
 \end{abstract}
 
 \section{Introduction}
@@ -66,10 +69,11 @@ The technique I want to focus on in this paper are stochastic sketch techniques
 that implement a certain data structure and an accompanying algorithm to store
 information efficient for cardinality estimation. I will follow the development
 chronologically from the first algorithm of Flajolet and Martin in 1985 
-\cite{fm85}, to the HyperLogLog algorithm in 2007.
+\cite{fm85}, to the HyperLogLog algorithm in 2007 and the HyperLogLog++ algorighm in
+2013 to the HLL-TailCut algorithm from 2023.
 
-TODO: Give an overview of the used techniques. Tell what I want to say and
-what I leave out.
+\todo{TODO: Give an overview of the used techniques. Tell what I want to say and
+what I leave out.}
 
 %\section{Probabilistic Counting with Stochastic Averaging}
 
@@ -87,7 +91,7 @@ optimal strategy.
 In this context Flajolet and Martin developed in 1985 a method to estimate the
 number of distinct items in a set in a space efficient way\cite{fm85}. The idea
 behind the method is to use a hash function that maps $n$ items uniformly to
-integers. If we look at the binary representation of these integers, and check
+integers. If we look at the registerary representation of these integers, and check
 the longest runs of zeros, in about $n/2$ cases, we have a '0' at any position.
 In about $n/4$ cases, we have two '0's consecutively. With a chance of $1/8$ we
 have three '0' in a row, and so on. That means if we start for example at the
@@ -97,18 +101,18 @@ item, we use the algorithm as described in Algorithm \ref{alg:fm85-add} to add
 set the position of the rightmost '1' in a bitmap.
 
 Flajolet and Martin found that they get better result, if an average of
-multiple ($m$) bins of bitmaps are used. This is equivalent with running an
+multiple ($m$) registers of bitmaps are used. This is equivalent with running an
 experiment multiple times to get results closer to the expected value. With a
-higher number of bins available for the average, the estimation quality raises,
+higher number of registers available for the average, the estimation quality raises,
 but at the same time more memory to store the bitmap is needed. They use the
-hash value to decide the bin (by using the modulo operation) and save the
-rightmost '1' of the binary representation in this bin.
+hash value to decide the register or register (by using the modulo operation) and save the
+rightmost '1' of the registerary representation in this register.
 
 \begin{algorithm}
 \caption{Adding an item in the Flajolet-Martin algorithm.}
 	\label{alg:fm85-add}
 	\begin{algorithmic}[1]
-		\State $m \gets $ Number of bins
+		\State $m \gets $ Number of registers
 		\Function{$\phi$}{$val$}
 			\State \Return position of the first 1 bit in val.
 		\EndFunction
@@ -126,10 +130,10 @@ rightmost '1' of the binary representation in this bin.
 \caption{Get an estimate in the Flajolet-Martin algorithm.}
 	\label{alg:fm85-query}
 	\begin{algorithmic}[1]
-		\State $m \gets $ Number of bins
+		\State $m \gets $ Number of registers
 		\Function{query}{}
 			\State $\rho \gets 0.77351, S \gets 0$
-			\State $\max \gets 32$ \Comment{32 bit per bin}
+			\State $\max \gets 32$ \Comment{32 bit per register}
 			\For{$i:=0$ to $m-1$}
 				\State $j \gets 0$
 				\While{$BITMAP[i][j]==1$ and $j<max$}
@@ -142,22 +146,22 @@ rightmost '1' of the binary representation in this bin.
 \end{algorithmic}
 \end{algorithm}
 
-When an estimate is needed, an average of the leftmost zeros over all bins 
+When an estimate is needed, an average of the leftmost zeros over all registers 
 are used, as shown in algorithm \ref{alg:fm85-query}. The magic number 
 $\rho=0.77351$ is used, as the expected Value of R - the position of 
 leftmost zero in the bitmap is 
 $$
-\mathbf{E}(R) \approx \log_{2}{\rho n}
+\mathbb{E}(R) \approx \log_{2}{\rho n}
 $$
-We sum up the bins and as each bin only counted $1/m$ items,
-we estimate the number with 
+We sum up the registers and as each register only counted $1/m$ items,
+we get an estimate with:
 $$
-\frac{1}{\rho} m \cdot 2^{\frac{S}{m}}.
+E = \frac{1}{\rho} m \cdot 2^{\frac{S}{m}}.
 $$
 
 The results for this algorithm are shown in Figure 1. The memory consumption
 for the algorithm is $m \cdot 32$. That means with $m=256$, we can produce estimates
-with about 5\% standard error and have to use 
+with about 5\% standard error for higher cardinalities and have to use 
 $256 \cdot 32=8192 \textrm{ bit } = 1 \textrm{kB}$ of memory to safely 
 count up to 100 million items, before the quality decreases.
 
@@ -181,53 +185,178 @@ count up to 100 million items, before the quality decreases.
 		\label{fig:fm85_265}
 	\end{subfigure}
 
-	\caption{The percentage of deviation from the true
-	number of items over 30 runs (in grey) are shown (m=265) 
-	up to one million items. The red line shows the average 
-	over the 30 runs.}
-	\label{fig:fm85}
+	\caption{Results for the Flajolet Martin algorithm. The percentage of
+	deviation from the true number of items over 30 runs (in gray) are shown
+	(m=265) up to one million items. The red line shows the average over the 30
+	runs.} 
+	\label{fig:fm85} 
 \end{figure*}
 
 Figure \ref{fig:fm85} shows the results of my implementation of the FM
-algorithm of a cardinality up to one million items. We can see that the
-algorithm results in strong overestimation below 1500 items for $m=265$. After
-that, we only have a deviation on average of about 1 percent of the true number
-of items. The solution for numbers below 1500 items is simply to count these
-items exactly in an array, and only use Flajolet \& Martin above a certain
-number.
+algorithm of a cardinality up to one million items for different values of $m$.
+We can see that the algorithm results in strong overestimation below 1500 items
+for $m=256$. After that, we only have a deviation on average of about 1 percent
+of the true number of items. This makes sense, since we use 256 registers, each
+new item is only stored in one of the registers, and many would remain empty in
+the beginning. With $256/0.77=332$ and $s^{n/265}=1$ for low $n$ we
+overestimate in the beginning. The solution for numbers below 1500 items is
+simply to count these items exactly in an array, and only use Flajolet \&
+Martin above a certain number.
 
-The value of $m$ - the number of bins is important for accuracy. With $m=265$,
-Flajolet and Marin report a bias of 0.0073 and a standard error of 4.65\%.
-For $m=16$, we have a bias of 1.0104, about the same, but a standard error 
-of 19.63\%. These numbers match my own experiments.
+The value of $m$ - the number of registers is important for accuracy. Even
+though we have more overestimation for less items counted, we get a better
+estimation for a higher number of items. With $m=265$, Flajolet and Marin
+report a bias of 0.0073 and a standard error of 4.65\%. For $m=16$, we have a
+bias of 1.0104, about the same, but a standard error of 19.63\%. These numbers
+match my own experiments. Generally, as estimated later in \cite{Durand2003},
+the standard error is about $1.3 / \sqrt{m}$.  
 
-\section{HyperLogLog, 2007}
+\section{HyperLogLog}
 
 A first refinement of the Flajolet \& Martin algorithm came in 2003 by Durand
-and Flajolet \cite{Durand2003}. Later in 2007 it was further refined
-\cite{Flajolet2007} to improve the accuracy even further to an algorithm
-called HyperLogLog.
+and Flajolet \cite{Durand2003}. Already in this paper the memory usage and the
+standard error could be reduced. They introduced a truncation rule to only use
+70\% of the smallest values in the registers, since they found that the arithmetic
+mean would often overestimate. Later, in 2007 Flajolet \cite{Flajolet2007}
+refined the algorithm even more to improve the accuracy even further to an
+algorithm called HyperLogLog (HLL).
 
 When we try to estimate the number of items, in the
-FM85 algorithm, we look for the maximum number of '1' in the bitmap. All the other '1'
+FM85 algorithm, we look for the maximum number of '1' in the bit registers. All the other '1'
 before and any bits after this position are not used. So instead of saving the
-complete bitmap, it should be enough to just save the maximum number. 
+complete bit register, it should be enough to just save the maximum number. 
 In addition, since we have a maximum of 32 bits originally in the
-bitmap, we only need 5 bits ($2^5=32$) for this number to be stored for each
-bin. This is an additional memory reduction.
+register, we only need 5 bits ($2^5=32$) for this number to be stored for each
+register. This is an additional memory reduction. Instead of 1kB of memory as in the
+original FM85 algorithm, the HLL algorithm only need 160 bytes.
 
-- splitting the hash function to fill multiple buckets with a subset of 
-bits of the hash.
-- only use the smallest 70\% of values (throw away high outliers)
-- harmonic mean
+\begin{algorithm}
+\caption{Adding an item in the HyperLogLog algorithm.}
+	\label{alg:hll-add}
+	\begin{algorithmic}[1]
+		\State $m \gets $ Number of registers
+		\Function{$\phi$}{$val$}
+			\State \Return position of the first 1 bit in val.
+		\EndFunction
 
+		\Function{addItem}{$x$}
+			\State $hashedx \gets hash(x)$
+			\State $j \gets hashedx \textrm{ mod } m$
+			\State $w \gets \phi(hashedx \textrm{ div } m)$
+			\State $M[j]:= max(M[j], \phi(w))$
+		\EndFunction
+\end{algorithmic}
+\end{algorithm}
 
-- Compressed FM and HLL \cite{Scheuermann2007}
+Algorithm \ref{alg:hll-add} shows my implementation of the algorithm to add an
+item. The original version used
+the first $b$ bits with $m=2^b$ to identify the register and used the remaining
+bits to evaluate the maximum numbers of zeros. As my implementation is done in
+python and integer values don't have a fixed size, I used the modulo operation
+(the last $b$ bits) to identify the register index and div $m$ (the equivalent
+of a bit shift $2^m$) as the remaining value to get the position of the first
+1-bit. This should not change the outcome, and as our results are comparable
+with the results of the HyperLogLog paper, this should not be a problem. 
 
-% read this: https://towardsdatascience.com/hyperloglog-a-simple-but-powerful-algorithm-for-data-scientists-aed50fe47869/
+As the original algorithm would overestimate when calculating the average over
+all registers. Only using the lowest 70\% was one method to improve the
+results. For HLL, Flajolet used the harmonic mean given by 
+$$ 
+H = \frac{n}{\sum_{j=i}^n \frac{1}{x_i}} 
+$$ 
+instead of the arithmetic mean to get
+the average of the registers against overestimation, as the harmonic mean gives
+lower results. The raw estimate (before corrections) is calculated with 
+$$ 
+E = \alpha_m m^2 \cdot (\sum_{i=1}^m 2^{-M[i]} )^{-1} 
+$$
+Since each register will have $n/m$ elements, when $n$ is the number of
+counted elements so far, with the harmonic mean of these
+registers $mH$ would be about $n/m$. Therefore, $m^2H$ should be $n$. Again
+a constant $\alpha$ is used to correct the bias due to hash collisions.
 
+In addition, Flajolet introduced corrections for very low numbers where we would
+not have enough data for good predictions and would see overestimations as in
+the original FM algorithm. If the estimate $E$ is below $\frac{5}{2}m$,
+they use linear counting and get a correction of
+$$
+E^* = m \log(\frac{m}{V})
+$$
+with $V$ as the number of registers equal to $0$. Instead of using the number of
+bits calculated by the harmonic mean over the registers, we estimate by counting
+the numer of empty registers.
+For very high numbers, where hash collisions are more common they give another
+correction based on the probability of hash collisions.
 
-\section{HyperLogLog++, 2013}
+Figure \ref{fig:hll256} shows the results for one million items, and we
+can see, that the results are good, even for few items. 
+
+\begin{figure}[htb]
+	\includegraphics[width=1.0\linewidth]{hll_256.pdf}
+	\caption{The results of the error in percentage of one
+	million items for the HyperLogLog algorithm over 30 independent runs
+	for $m=256$.}
+	\label{fig:hll256}
+\end{figure}
+
+Overall the quality of HLL exceeds the FM algorithm both in space and
+estimation quality and has become the standard in many applications
+\cite{redis2025, dragonfly2025, redshift2025}. It is memory efficient, is fast, as the
+slowest part is the hashing function, scalable up to $10^9$ without loss of
+quality, simple to implement and has a standard error of only $1.04/\sqrt{m}$.
+
+Originally developed for use in databases, both FM85 and HLL have become more
+interesting for streaming applications too. \cite{Scheuermann2007} propose a
+lossless compression scheme with arithmetic coding that produces results close
+to the theoretical optimum to perform distributed data aggregations over networks.
+
+\section{HyperLogLog++}
+
+The next improvement came in 2013 by \cite{Heule2013} with HyperLogLog++
+(HLL++). In their paper they use a 64-bit hash function, that reduces hash
+collisions for lower cardinalities. Instead of using 5 bits to store the
+maximum '1's in registers, they use 6 bits. With this change they are able to
+securely estimate cardinalities up to $2^{64} = 1.8\cdot 10^{19}$. Even though
+this is a number that seldom should be met in real life, they propose to add an
+extra bit even more, if needed, as memory is cheap compared to the amount of
+items at this cardinality.
+
+With this higher number of storage, since hash collisions are not a problem
+anymore the correction for large cardinalities used in HLL, is not needed
+anymore. For small cardinalities they keep the linear counting correction of
+HLL. 
+
+\begin{figure}[htb]
+	\includegraphics[width=1.0\linewidth]{hll_16380.pdf}
+	\caption{Spike at the transition between linear counting and harmonic mean
+	estimation in HLL for $m=16380$.}
+	\label{fig:hll_spike}
+\end{figure}
+
+Another improvement of HLL++ is the use of Bias correction. They show that the
+transition between linear counting of small values and harmonic mean estimation
+of higher values is not flawless. Figure \ref{fig:hll_spike} shows a spike at
+the transition. This spike is not visible for all values of $m$, but for some,
+it might be a problem. Instead, they used 200 cardinalities as interpolation
+points get an estimate for bias correction values by using k-nearest neighbor
+interpolation. This not only reduced the spikes at the transition points
+between linear counting and the harmonic mean estimation, but gives better
+general results also for higher cardinalities. I have to point out, that
+only the bias will be corrected, the standard error for HLL++ and HLL is
+about the same (except for the spike reduction).
+
+Since 5 bits are used to store the data, Heule et al. saves the number of '1's
+with a sparse representation as long as the size of the sparse representation
+is smaller than $6 \cdot m$ bits. In this way, they can keep the size
+requirements still small, in fact, as long as $n < m$, HLL++ requires
+significantly less memory than HLL. For higher cardinalities this is of course
+not true anymore.
+
+To summarize HLL++, they use 6-bit instead of 5 bits, but a sparse
+representation for small cardinalities to save memory. Using 6-bits leads to
+better estimations of higher cardinalities and empirical bias correction to
+improve the estimation even more.
+
 
 \section{LogLogBeta, 2016}
 

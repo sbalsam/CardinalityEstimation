@@ -10,7 +10,7 @@ class HLL:
 
     def __init__(self, bins: int):
         self.m: int = bins                          # How many bins
-        self.alpha = 0.7213 / (1 + 1.079/self.m)
+        self.alpha = 0.7213 / (1 + 1.079/self.m)    # for m >= 128
         self.bits = [0] * self.m # The pseudo - bitmap to store data
         self.resetBits()
 
@@ -30,13 +30,13 @@ class HLL:
         if result <= 5/2 * self.m:
             sumreg = self.bits.count(0)
             if sumreg > 0:
-                return self.m * math.log2(self.m/sumreg)
+                return self.m * math.log(self.m/sumreg)
             else:
                 return result
         if result <= 1/30 * 2**32:
             return result
         else:
-            return -2**32 * math.log2(1 - result / 2**32)
+            return -2**32 * math.log(1 - result / 2**32)
 
 
     def rho(self, value):
