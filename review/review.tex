@@ -268,7 +268,7 @@ instead of the arithmetic mean to get
 the average of the registers against overestimation, as the harmonic mean gives
 lower results. The raw estimate (before corrections) is calculated with 
 $$ 
-E = \alpha_m m^2 \cdot (\sum_{i=1}^m 2^{-M[i]} )^{-1} 
+E = \alpha_m m^2 \cdot \left(\sum_{i=1}^m 2^{-M[i]} \right)^{-1} 
 $$
 Since each register will have $n/m$ elements, when $n$ is the number of
 counted elements so far, with the harmonic mean of these
@@ -285,8 +285,8 @@ $$
 with $V$ as the number of registers equal to $0$. Instead of using the number of
 bits calculated by the harmonic mean over the registers, we estimate by counting
 the numer of empty registers.
-For very high numbers, where hash collisions are more common they give another
-correction based on the probability of hash collisions.
+For very high numbers, where hash collisions are more common, they give another
+correction, based on the probability of hash collisions.
 
 Figure \ref{fig:hll256} shows the results for one million items, and we
 can see, that the results are good, even for few items. 
@@ -322,7 +322,7 @@ extra bit even more, if needed, as memory is cheap compared to the amount of
 items at this cardinality.
 
 With this higher number of storage, since hash collisions are not a problem
-anymore the correction for large cardinalities used in HLL, is not needed
+anymore, the correction for large cardinalities used in HLL, is also not needed
 anymore. For small cardinalities they keep the linear counting correction of
 HLL. 
 
@@ -350,12 +350,12 @@ with a sparse representation as long as the size of the sparse representation
 is smaller than $6 \cdot m$ bits. In this way, they can keep the size
 requirements still small, in fact, as long as $n < m$, HLL++ requires
 significantly less memory than HLL. For higher cardinalities this is of course
-not true anymore.
+not true anymore, since we can not use sparse representations.
 
 To summarize HLL++, they use 6-bit instead of 5 bits, but a sparse
 representation for small cardinalities to save memory. Using 6-bits leads to
-better estimations of higher cardinalities and empirical bias correction to
-improve the estimation even more.
+better estimations of higher cardinalities. With empirical bias corrections
+they improve the estimation even more.
 
 
 \section{LogLogBeta, 2016}
