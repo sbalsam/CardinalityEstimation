@@ -34,6 +34,11 @@ Heule, Nunkesser, and Hall (2013).
 Liu, Xu, Yu, Covinelli, and ZuZarte (2015).
 \newblock Cardinality estimation using neural networks.
 
+\bibitem[Qin et~al., 2016]{Qin2016}
+Qin, Kim, and Tung (2016).
+\newblock Loglog-beta and more: A new algorithm for cardinality estimation
+  based on loglog counting.
+
 \bibitem[Redis, 2025]{redis2025}
 Redis (2025).
 \newblock Hyperloglog docs.
