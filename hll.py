@@ -3,15 +3,15 @@ import numpy as np
 
 # -*- coding: utf-8 -*-
 """ 
-Implementation of the Hyper Log Log algorithm to estimate the number 
+Implementation of the HyperLogLog algorithm to estimate the number 
 of distinct items in a stream. 
 """
 class HLL:
 
     def __init__(self, bins: int):
         self.m: int = bins                          # How many bins
-        self.alpha = 0.7213 / (1 + 1.079/self.m)    # for m >= 128
-        self.bits = [0] * self.m # The pseudo - bitmap to store data
+        self.alpha: float = 0.7213 / (1 + 1.079/self.m)    # for m >= 128
+        self.bits: list[int] = [0] * self.m # The pseudo - bitmap to store data
         self.resetBits()
 
     def resetBits(self):
@@ -20,7 +20,7 @@ class HLL:
         for i in range(0, self.m):
             self.bits[i] = 0  
 
-    def query(self) -> int:
+    def query(self) -> float:
         """Returns an estimation of the number of items
         """
         result: int = 0
@@ -28,7 +28,7 @@ class HLL:
             result += 2**(-self.bits[i])
         result = self.alpha * self.m**2 / result
         if result <= 5/2 * self.m:
-            sumreg = self.bits.count(0)
+            sumreg: int = self.bits.count(0)
             if sumreg > 0:
                 return self.m * math.log(self.m/sumreg)
             else:
@@ -39,9 +39,9 @@ class HLL:
             return -2**32 * math.log(1 - result / 2**32)
 
 
-    def rho(self, value):
+    def rho(self, value: int) -> int:
         """returns the position of the rightmost 1-bit
-           rho(1)=1, rho(0001)=4 
+           rho(1)=1, rho(1000)=4 
         """
         bit: int = 1
         count: int = 0
@@ -58,7 +58,7 @@ class HLL:
         h: int = hash(item) % (9999999999999)
         bin_num: int = h % self.m
         hashval: int = int(h / self.m)
-        count = self.rho(hashval)
+        count: int = self.rho(hashval)
         self.bits[bin_num] = max(self.bits[bin_num], count)
 
 

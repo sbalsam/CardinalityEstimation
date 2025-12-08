@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.20)  2 DEC 2025 10:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.20)  8 DEC 2025 10:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -867,67 +867,59 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 70.
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 125.
+put line 129.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-<fm85_16.pdf, id=70, 462.52798pt x 346.89601pt>
+<fm85_16.pdf, id=68, 462.52798pt x 346.89601pt>
 File: fm85_16.pdf Graphic file (type pdf)
 <use fm85_16.pdf>
-Package pdftex.def Info: fm85_16.pdf  used on input line 184.
+Package pdftex.def Info: fm85_16.pdf  used on input line 188.
 (pdftex.def)             Requested size: 131.64813pt x 98.73405pt.
-<fm85_64.pdf, id=71, 462.52798pt x 346.89601pt>
+<fm85_64.pdf, id=69, 462.52798pt x 346.89601pt>
 File: fm85_64.pdf Graphic file (type pdf)
 <use fm85_64.pdf>
-Package pdftex.def Info: fm85_64.pdf  used on input line 190.
+Package pdftex.def Info: fm85_64.pdf  used on input line 194.
 (pdftex.def)             Requested size: 131.64813pt x 98.73405pt.
-<fm85_265.pdf, id=72, 462.52798pt x 346.89601pt>
+<fm85_265.pdf, id=70, 462.52798pt x 346.89601pt>
 File: fm85_265.pdf Graphic file (type pdf)
 <use fm85_265.pdf>
-Package pdftex.def Info: fm85_265.pdf  used on input line 196.
+Package pdftex.def Info: fm85_265.pdf  used on input line 200.
 (pdftex.def)             Requested size: 131.64813pt x 98.73405pt.
  [2]
-<hll_256.pdf, id=93, 462.52798pt x 346.89601pt>
+<hll_256.pdf, id=92, 462.52798pt x 346.89601pt>
 File: hll_256.pdf Graphic file (type pdf)
 <use hll_256.pdf>
-Package pdftex.def Info: hll_256.pdf  used on input line 324.
+Package pdftex.def Info: hll_256.pdf  used on input line 329.
 (pdftex.def)             Requested size: 244.33128pt x 183.25058pt.
- [3 <./fm85_16.pdf> <./fm85_64.pdf> <./fm85_265.pdf> <./hll_256.pdf>]
-<hll_16380.pdf, id=227, 462.52798pt x 346.89601pt>
+<hll_16380.pdf, id=98, 462.52798pt x 346.89601pt>
 File: hll_16380.pdf Graphic file (type pdf)
 <use hll_16380.pdf>
-Package pdftex.def Info: hll_16380.pdf  used on input line 360.
-(pdftex.def)             Requested size: 244.33128pt x 183.25058pt.
-
-Underfull \vbox (badness 1496) has occurred while \output is active []
-
-
-Overfull \hbox (82.81624pt too wide) in paragraph at lines 400--401
-\OT1/lmr/m/n/9 (-20) https://topoer-seu.github.io/PersonalPage/csqjxiao[]files/
-papers/INFOCOM17.pdf 
+Package pdftex.def Info: hll_16380.pdf  used on input line 373.
+(pdftex.def)             Requested size: 224.39662pt x 168.29729pt.
+<llbeta_16380.pdf, id=99, 462.52798pt x 346.89601pt>
+File: llbeta_16380.pdf Graphic file (type pdf)
+<use llbeta_16380.pdf>
+Package pdftex.def Info: llbeta_16380.pdf  used on input line 379.
+(pdftex.def)             Requested size: 224.39662pt x 168.29729pt.
+ [3 <./fm85_16.pdf> <./fm85_64.pdf> <./fm85_265.pdf>] (./review.bbl
+Underfull \hbox (badness 1221) in paragraph at lines 20--23
+[]\OT1/lmr/m/n/8 (+20) Flajolet, Fusy, Gan-douet, and Me-u-nier
  []
 
-(./review.bbl
-Underfull \hbox (badness 2080) in paragraph at lines 16--18
-[]\OT1/lmr/m/n/9 (+20) Durand and Fla-jo-let (2003).
- []
+[4 <./hll_256.pdf>]) [5
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 57--59
-[]\OT1/lmr/m/n/9 (+20) Woltmann, Hart-mann, Thiele,
- []
-
-) [4 <./hll_16380.pdf>] [5] (./review.aux)
+ <./hll_16380.pdf> <./llbeta_16380.pdf>] (./review.aux)
 Package rerunfilecheck Info: File `review.out' has not changed.
 (rerunfilecheck)             Checksum: 8FF014CD18EC6D9DF6B2EB44020F8090;941.
  ) 
 Here is how much of TeX's memory you used:
- 25956 strings out of 480121
- 500559 string characters out of 5892160
- 887510 words of memory out of 5000000
- 43324 multiletter control sequences out of 15000+600000
- 512056 words of font info for 117 fonts, out of 8000000 for 9000
+ 25982 strings out of 480121
+ 500928 string characters out of 5892160
+ 888013 words of memory out of 5000000
+ 43333 multiletter control sequences out of 15000+600000
+ 512709 words of font info for 125 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  84i,10n,89p,999b,1000s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
@@ -945,10 +937,10 @@ share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public
 b></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/symbols/msbm10.pfb>
-Output written on review.pdf (5 pages, 550727 bytes).
+Output written on review.pdf (5 pages, 606333 bytes).
 PDF statistics:
- 357 PDF objects out of 1000 (max. 8388607)
- 192 compressed objects within 2 object streams
+ 386 PDF objects out of 1000 (max. 8388607)
+ 198 compressed objects within 2 object streams
  37 named destinations out of 1000 (max. 500000)
- 22630 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 22635 words of extra memory for PDF output out of 24883 (max. 10000000)
 
