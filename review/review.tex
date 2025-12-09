@@ -3,8 +3,12 @@
 %\documentclass{article}
 %\usepackage[top=1.5in, bottom=1.25in, left=1.8in, right=1.8in]{geometry}
 
+FQL1nvOJxECkOHv8bhax
 
 %\usepackage{flushend} 
+\usepackage[hyphens,spaces,obeyspaces]{url}
+\usepackage{xurl}
+\usepackage{multicol}
 \usepackage{amssymb}
 \usepackage{subcaption}
 \usepackage{algorithm}
@@ -35,7 +39,18 @@
     }}
 }
 
-\title{Cardinality Estimation of Distinct Items - An Overview}
+% \renewenvironment{abstract}
+% {
+%   \centerline
+%   {\large \bfseries \scshape Abstract}
+%   \begin{quote}
+% }
+% {
+%   \end{quote}
+% }
+%
+
+\title{Cardinality Estimation of Distinct Items - A Review}
 \author{Sebastian Balsam}
 \date{\today}
 
@@ -47,8 +62,15 @@
 
 \begin{abstract}
 In this paper I want to give an overview of different solutions
-	for the Count Distinct Problem....\todo{TODO}
+for the Count Distinct Problem. I will follow the development from the
+first algorithm by Flajolet and Martin, to the HyperLogLog algorithm 
+and further optimizations to increase the estimation quality while
+at the same time decrease the memory consumption of these algorithms.
+I have implemented most of the described algorithms to confirm the 
+algorithms estimations and compare their results.
+...\todo{TODO}
 \end{abstract}
+
 
 \section{Introduction}
 
@@ -81,17 +103,23 @@ Schwabe2024}.
 The technique I want to focus on in this paper are stochastic sketch techniques
 that implement a certain data structure and an accompanying algorithm to store
 information efficient for cardinality estimation. I will follow the development
-chronologically from the first algorithm of Flajolet and Martin in 1985 
-\cite{fm85}, to the HyperLogLog algorithm in 2007 and the HyperLogLog++ algorighm in
-2013 to the HLL-TailCut algorithm from 2023. All of the discussed methods are
-based on the original method by Flajolet and Martin and we can follow the
-different problems and solutions researchers have found to improve the
-algorithm further and further. From a science history perspective, this 
-paper presents in a chronological order all the improvements that have been
-made often with surprising ideas. There are other methods that solve the 
-given problem, as mentioned before, but I want to focus specifically on the
-history of improvements of the Flajolet \& Martin algorithm.
+chronologically from the first algorithm of Flajolet and Martin in 1985
+\cite{fm85}, to the HyperLogLog algorithm in 2007 and the HyperLogLog++
+algorighm in 2013 to the HLL-TailCut algorithm from 2017 and the
+ExtendedHyperLogLog in 2023. All of the discussed methods are based on the
+original method by Flajolet and Martin and we can follow the different problems
+and solutions researchers have found to improve the algorithm further and
+further. From a science history perspective, this paper presents in a
+chronological order all the improvements that have been madeo, often with
+surprising ideas. There are other methods that solve the given problem, as
+mentioned before, but I want to focus specifically on the history of
+improvements of the Flajolet \& Martin algorithm.
 
+I will omit any mathematical proofs, as they can be found in the original
+sources, but I will specify any equations that are neccessary for understanding
+the algorithm. Most of the algorithms are implemented by myself in the
+accompanying repository \cite{repo} and have been used to verify and confirm
+the problems and results of the algorithms.
 %\section{Probabilistic Counting with Stochastic Averaging}
 
 %- Overview of PCSA
@@ -456,13 +484,68 @@ estimation quality, but is a great simplification of the algorithm and also
 solves the problem of the transition between linear counting and harmonic mean
 estimation.
 
+\section{HLL-TailCut}
+%https://topoer-seu.github.io/PersonalPage/csqjxiao\_files/papers/INFOCOM17.pdf
+Already in \cite{Durand2003}, Flajolet only used the lowest 70\% of the registers.
+This idea has been taken up by \cite{Xuao2017}. If we take a look at the histogram
+of the numbers of values in the saved registers as shown in Figure \ref{fig:histogram},
+we can see that the histogram has a long tail to the right, with few registers of
+high values. These registers are not contributing very much to the result in the
+calculation of the mean. But at the same time, they take precious memory. The 
+general idea is to cut registers with higher values, which can save memory.
+If we only store registers up to a size of 16, we only need 4 Bits.
+
+\begin{figure}[htb]
+	\includegraphics[width=1.0\linewidth]{llbeta_histogram.pdf}
+	\caption{This histogram shows the frequency of the numbers in the registers for
+	LLBeta with $m=2^{16}$ for 10 Million items. Even though, they are not visible in the figure, there
+	are values up to 28, although with a very low frequency.}
+	\label{fig:histogram}
+\end{figure}
+
+Registers with a maximum value of 16, can count up to $2^{16}=65536$. But since
+we distribute the counted items on $m$ registers, we have $m\cdot 2^{16}$. As
+$m$ is bound to a given estimation error and we would like to minimize this error,
+values for $m=2^{14}$ are quite common to get an estimation error of about 0.4\%.
+This means we can store up to $2^{14}\cdot 2^{16} = 10^{9}$ items, although we 
+get wrong results already before due to hash collisions. Nevertheless, this should
+be enough for most applications.
+
+Xuao et al. went further and could truncate the size to even $3\cdot m$ Bits
+by using a base register $B$ below the truncated registers $M$, as most of the
+registers would share the same base register with increasing items that are counted.
+They claimed they could reduce the error to $1.0/\sqrt{m}$, but \cite{Pettie2020} showed,
+that this is unfortunately not true, the error is constant and independent of $m$. 
+But \cite{Apache2019} has an implementation which uses 4 bits. The method of
+tail cutting works and can reduce the amount needed for memory with 20\% (from 5 Bits
+to 4 Bits).
+
 \section{ExtendedHyperLogLog, 2023}
 %https://arxiv.org/pdf/2106.06525
 
-\section{HLL-TailCut, 2023}
-%https://topoer-seu.github.io/PersonalPage/csqjxiao\_files/papers/INFOCOM17.pdf
+For the ExtendedHyperLogLog (ExHLL)...
+
+\section{Streamed Approximate Counting, Ting}
+% Better Cardinality Estimators for HyperLogLog, PCSA, and Beyond: https://dl.acm.org/doi/pdf/10.1145/3584372.3588680
 
 \section{Conclusion}
+
+In this paper I wanted to show the progressive improvements, that were made
+on an algorithm, that already was based on an impressive idea. Each update was
+made by a certain need or 
+
+The original FM85 algorithm had problems for lower cardinalities and general
+estimation error. Flajolet improved this with the HLL algorithm. 
+
+But the transition between linear counting and the harmonic mean was not flawless.
+For certain values of $m$, we could see a spike with overestimation. HLL++ and
+HLLBeta improved the estimation and could eliminate the spike at the transition.
+
+HLL used 5 bits to save the values for each register, but in the HLL-TailCut
+algorithm, it could be shown, that already 4 bits can be enough to store big
+cardinalities without loosing quality of estimation, depending on $m$.
+
+
 
 \begin{table*}[htb]
 \label{tbl:methods}
@@ -474,10 +557,10 @@ estimation.
 \hline
 	FM85 & 1985 & $1.3/\sqrt{m}$ & $32\cdot m$ & probabilistic counting of bits \\
 	HLL & 2007 & $1.04/\sqrt{m}$ & $5\cdot m$  & harmonic mean, corrections for small and big cardinalities \\
-	HLL++ & 2013 & $1.04/\sqrt{m}$ & $< 6\cdot m$ & using 6 bits, empirical bias correction \\ 
-	LogLogBeta & 2016 & $1.04/\sqrt{m}$ & $< 6\cdot m$ & better quality for low cardinalities\\
+	HLL++ & 2013 & $1.04/\sqrt{m}$ & $\leq 6\cdot m$ & using 6 bits, empirical bias correction \\ 
+	LogLogBeta & 2016 & $1.04/\sqrt{m}$ & $\leq 6\cdot m$ & better quality for low cardinalities\\
+	HLL-TailCut & 2017 & $1.04/\sqrt{m}$ & $4 \cdot m$ & truncated registers for lower memory consumption\\ 
 	ExHLL & 2023 &  &\\ 
-	HLL-TailCut & 2023 & & \\ 
 \end{tabular}
 \end{center}
 \end{table*}

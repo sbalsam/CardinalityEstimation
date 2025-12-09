@@ -68,7 +68,7 @@ TimeLine:
 - 2015 Historic Inverse Probability (Cohen)
 - 2016 LogLogBeta (Qin)
 - 2017 - Review: New cardinality estimation algorithms (Ertl)
+- 2017 HLL-tailcut - Better with Fewer Bits (Xiao)
 - 2017 Back to the Future (Lang)
 - 2023 ExtendedHyperLogLog (Ohayon)
-- 2023 HLL-tailcut - Better with Fewer Bits (Xiao)
 - 2023 Better Cardinality Estimators (Wang)

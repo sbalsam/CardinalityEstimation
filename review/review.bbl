@@ -4,6 +4,10 @@
 Amazon (2020).
 \newblock Amazon redshift announces support for hyperloglog sketches.
 
+\bibitem[Balsam, 2025]{repo}
+Balsam (2025).
+\newblock \url{https://github.com/sbalsam/CardinalityEstimation/}.
+
 \bibitem[Chakraborty et~al., 2023]{cvm2023}
 Chakraborty, Vinodchandran, and Meel (2023).
 \newblock Distinct elements in streams: An algorithm for the (text) book.
@@ -34,6 +38,11 @@ Heule, Nunkesser, and Hall (2013).
 Liu, Xu, Yu, Covinelli, and ZuZarte (2015).
 \newblock Cardinality estimation using neural networks.
 
+\bibitem[Pettie and Wang, 2020]{Pettie2020}
+Pettie and Wang (2020).
+\newblock Information theoretic limits of cardinality estimation: Fisher meets
+  shannon.
+
 \bibitem[Qin et~al., 2016]{Qin2016}
 Qin, Kim, and Tung (2016).
 \newblock Loglog-beta and more: A new algorithm for cardinality estimation
@@ -53,8 +62,18 @@ Schwabe and Acosta (2024).
 \newblock Cardinality estimation over knowledge graphs with embeddings and
   graph neural networks.
 
+\bibitem[{The Apache Foundation}, 2019]{Apache2019}
+{The Apache Foundation} (2019).
+\newblock Apache datasketches: A software library of stochastic stream- ing
+  algorithms. \url{https://datasketches.apache.org/}.
+
 \bibitem[Woltmann et~al., 2019]{Woltmann2019}
 Woltmann, Hartmann, Thiele, Habich, and Lehner (2019).
 \newblock Cardinality estimation with local deep learning models.
+
+\bibitem[Xuao et~al., 2017]{Xuao2017}
+Xuao, Zhou, and Chen (2017).
+\newblock Better with fewer bits: Improving the performance of cardinality
+  estimation of large data streams.
 
 \end{thebibliography}
