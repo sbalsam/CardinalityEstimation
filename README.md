@@ -9,7 +9,7 @@ This project consists of three parts:
 ## Review paper
 
 The review paper with a detailed description of all methods can be 
-read [here](review/review.pdf).
+read [here](review/cardinalityEstimation.pdf).
 
 ## Python implementations
 
