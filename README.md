@@ -18,9 +18,14 @@ desirable in real world applications, but Python being a slow language would
 not be used in these cases anyway. Here I am only interested in the efficiency
 of the algorithm, not in the efficiency of the implementation. 
 
-[fm85.py](fm85.py) is the implementation of the original Flajolet & Martin...
+[fm85.py](fm85.py) is the implementation of the original Flajolet & Martin algorithm
+[Proba bit istic Cou nting Algorithms for Data Base 
+Applications - Flajolet & Martin, 1985](https://algo.inria.fr/flajolet/Publications/FlMa85.pdf).
 
-[hll.py](hll.py) is an implementation of Flajolet... As python does not use a
+[hll.py](hll.py) is an implementation of Flajolts HyperLogLog algorithm 
+[HyperLogLog: the analysis of a near-optimal
+cardinality estimation algorithm - Flajolet, Fusy, Gandouet, Meunier, 2007](https://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf) 
+As python does not use a
 fixed length for integers, I skipped over the representation in memory with 5
 Bits as used in the original paper. Instead, an array of integers of size m is
 used. These integers can be bigger than 32 Bit. Since I was not interested in
@@ -45,10 +50,11 @@ or sparse representation, as I am not concerned with the memory efficiency here.
 [hllTailCut.py](hllTailCut.py)
 ("Better with fewer bits: Improving the performance of cardinality estimation 
 of large data streams - Qingjun Xiao, You Zhou, Shigang 
-Chen")[https://www.cise.ufl.edu/~sgchen/Publications/XZC17.pdf]
+Chen")[https://www.cise.ufl.edu/~sgchen/Publications/XZC17.pdf].
 
 [ehll.py](ehll.py) an implementation of the Extended HyperLogLog algorithm
-(ExtendedHyperLogLog: Analysis of a new Cardinality Estimator - Tal Ohayon, 2021)[https://arxiv.org/pdf/2106.06525]
+(ExtendedHyperLogLog: Analysis of a new Cardinality Estimator 
+- Tal Ohayon, 2021)[https://arxiv.org/pdf/2106.06525]. 
 
 ## Jupyter Notebook
 
