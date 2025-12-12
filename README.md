@@ -1,10 +1,19 @@
-# Cardinality Estimation
+# Cardinality Estimation of Distinct Elements
 
-This project consists of three parts:
+This project is done as coursework for the course
+DT8116 - Mining of Massive Datasets, NTNU Norway.
 
-- A review paper describing the techniques
-- Python implementations for FM85, HLL, LogLogBeta
-- Jupyter notebook using the implementations
+I want to give an overview of different solutions for the Count Distinct
+Problem. I will follow the development from the first algorithm by Flajolet and
+Martin, to the HyperLogLog algorithm and further optimizations to the Extended
+HyperLogLog algorithm. All of then increase the estimation quality while at the
+same time decrease the memory consumption.
+
+The project consists of three parts:
+
+- A review paper describing the techniques.
+- Python implementations for FM85, HLL, LogLogBeta, Extended HyperLogLog.
+- Jupyter notebook using the implementations.
 
 ## Review paper
 
