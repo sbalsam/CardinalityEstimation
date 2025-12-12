@@ -6,8 +6,8 @@ DT8116 - Mining of Massive Datasets, NTNU Norway.
 I want to give an overview of different solutions for the Count Distinct
 Problem. I will follow the development from the first algorithm by Flajolet and
 Martin, to the HyperLogLog algorithm and further optimizations to the Extended
-HyperLogLog algorithm. All of then increase the estimation quality while at the
-same time decrease the memory consumption.
+HyperLogLog algorithm. All of them increase the estimation quality while at the
+same time lower the memory consumption.
 
 The project consists of three parts:
 
@@ -45,7 +45,7 @@ Another difference to the original paper is, that I count the rightmost '1's
 instead of the leftmost. This is again due to the way integers are stored in
 Python. As we don't have a fixed length, an integer always starts with a '1'.
 There are never 0-paddings on the left. This should also not be a problem, as
-the probabilites of having consecutive '0's on the left or on the right of the
+the probabilities of having consecutive '0's on the left or on the right of the
 binary representation of integers should be the same, as long as the hash
 function distributes uniformly. For simplicity, I used Python's build in hash()
 function. The results indicate, that it should be good enough for my purpose.
@@ -66,7 +66,7 @@ Chen")[https://www.cise.ufl.edu/~sgchen/Publications/XZC17.pdf].
 
 ## Jupyter Notebook
 
-The Jupyter notebook can be read [here](Cardinality.ipynb). It uses all of the
+The Jupyter notebook can be read [here](Cardinality.ipynb). It uses all the
 implemented methods to visualize their qualities and problems. I also used
 the notebook to prepare the figures for the paper.
 
