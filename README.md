@@ -2,9 +2,14 @@
 
 This project consists of three parts:
 
+- A review paper describing the techniques
 - Python implementations for FM85, HLL, LogLogBeta
 - Jupyter notebook using the implementations
-- A review paper describing the techniques
+
+## Review paper
+
+The review paper with a detailed description of all methods can be 
+read [here](review/review.pdf).
 
 ## Python implementations
 
@@ -42,14 +47,12 @@ or sparse representation, as I am not concerned with the memory efficiency here.
 of large data streams - Qingjun Xiao, You Zhou, Shigang 
 Chen")[https://www.cise.ufl.edu/~sgchen/Publications/XZC17.pdf]
 
+[ehll.py](ehll.py) an implementation of the Extended HyperLogLog algorithm
+(ExtendedHyperLogLog: Analysis of a new Cardinality Estimator - Tal Ohayon, 2021)[https://arxiv.org/pdf/2106.06525]
 
 ## Jupyter Notebook
 
 The Jupyter notebook can be read [here](Cardinality.ipynb). It uses all of the
 implemented methods to visualize their qualities and problems. I also used
-the notebook to prepare the figures for the paper 
+the notebook to prepare the figures for the paper.
 
-## Review paper
-
-The review paper with a detailed description of all methods can be 
-read [here](review/review.pdf).

@@ -1,5 +1,5 @@
 
-name := review
+name := cardinalityEstimation
 
 all: $(name).pdf
 

@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.20)  9 DEC 2025 13:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.20)  12 DEC 2025 14:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**review
-(./review.tex
+**cardinalityEstimation
+(./cardinalityEstimation.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21>
 (/usr/share/texlive/texmf-dist/tex/latex/extsizes/extarticle.cls
@@ -774,8 +774,25 @@ LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 5
 8.
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) (./review.aux)
-\openout1 = `review.aux'.
+)
+(./cardinalityEstimation.aux
+
+LaTeX Warning: Label `fig:hllspike' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:hllspike' multiply defined.
+
+
+LaTeX Warning: Label `fig:llbetaspike' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:llbetaspike' multiply defined.
+
+
+LaTeX Warning: Label `fig:hll_spike' multiply defined.
+
+)
+\openout1 = `cardinalityEstimation.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
 LaTeX Font Info:    ... okay on input line 58.
@@ -795,6 +812,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 58.
 LaTeX Font Info:    ... okay on input line 58.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 58.
 LaTeX Font Info:    ... okay on input line 58.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -849,9 +867,9 @@ LaTeX Info: Redefining \ref on input line 58.
 LaTeX Info: Redefining \pageref on input line 58.
 LaTeX Info: Redefining \nameref on input line 58.
 
-(./review.out) (./review.out)
+(./cardinalityEstimation.out) (./cardinalityEstimation.out)
 \@outlinefile=\write4
-\openout4 = `review.out'.
+\openout4 = `cardinalityEstimation.out'.
 
 LaTeX Info: Redefining \microtypecontext on input line 58.
 Package microtype Info: Applying patch `item' on input line 58.
@@ -938,63 +956,98 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 91.
+(Font)              <9> on input line 93.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 91.
+(Font)              <6> on input line 93.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 156.
+put line 160.
 <fm85_16.pdf, id=71, 462.52798pt x 346.89601pt>
 File: fm85_16.pdf Graphic file (type pdf)
 <use fm85_16.pdf>
-Package pdftex.def Info: fm85_16.pdf  used on input line 215.
-(pdftex.def)             Requested size: 131.64813pt x 98.73405pt.
+Package pdftex.def Info: fm85_16.pdf  used on input line 219.
+(pdftex.def)             Requested size: 148.10258pt x 111.07779pt.
 <fm85_64.pdf, id=72, 462.52798pt x 346.89601pt>
 File: fm85_64.pdf Graphic file (type pdf)
 <use fm85_64.pdf>
-Package pdftex.def Info: fm85_64.pdf  used on input line 221.
-(pdftex.def)             Requested size: 131.64813pt x 98.73405pt.
+Package pdftex.def Info: fm85_64.pdf  used on input line 225.
+(pdftex.def)             Requested size: 148.10258pt x 111.07779pt.
 <fm85_265.pdf, id=73, 462.52798pt x 346.89601pt>
 File: fm85_265.pdf Graphic file (type pdf)
 <use fm85_265.pdf>
-Package pdftex.def Info: fm85_265.pdf  used on input line 227.
-(pdftex.def)             Requested size: 131.64813pt x 98.73405pt.
+Package pdftex.def Info: fm85_265.pdf  used on input line 231.
+(pdftex.def)             Requested size: 148.10258pt x 111.07779pt.
  [2]
 <hll_256.pdf, id=97, 462.52798pt x 346.89601pt>
 File: hll_256.pdf Graphic file (type pdf)
 <use hll_256.pdf>
-Package pdftex.def Info: hll_256.pdf  used on input line 356.
+Package pdftex.def Info: hll_256.pdf  used on input line 361.
 (pdftex.def)             Requested size: 244.33128pt x 183.25058pt.
  [3 <./fm85_16.pdf> <./fm85_64.pdf> <./fm85_265.pdf>]
-<hll_16380.pdf, id=205, 462.52798pt x 346.89601pt>
+<hll_16380.pdf, id=208, 462.52798pt x 346.89601pt>
 File: hll_16380.pdf Graphic file (type pdf)
 <use hll_16380.pdf>
-Package pdftex.def Info: hll_16380.pdf  used on input line 400.
+Package pdftex.def Info: hll_16380.pdf  used on input line 405.
 (pdftex.def)             Requested size: 224.39662pt x 168.29729pt.
-<llbeta_16380.pdf, id=206, 462.52798pt x 346.89601pt>
+<llbeta_16380.pdf, id=209, 462.52798pt x 346.89601pt>
 File: llbeta_16380.pdf Graphic file (type pdf)
 <use llbeta_16380.pdf>
-Package pdftex.def Info: llbeta_16380.pdf  used on input line 406.
+Package pdftex.def Info: llbeta_16380.pdf  used on input line 411.
 (pdftex.def)             Requested size: 224.39662pt x 168.29729pt.
+
+
+LaTeX Warning: Reference `fig:histogram' on page 4 undefined on input line 495.
+
+
+[4 <./hll_256.pdf>]
+<llbeta_histogram.pdf, id=251, 462.52798pt x 346.89601pt>
+File: llbeta_histogram.pdf Graphic file (type pdf)
+<use llbeta_histogram.pdf>
+Package pdftex.def Info: llbeta_histogram.pdf  used on input line 513.
+(pdftex.def)             Requested size: 112.1983pt x 84.146pt.
+<llbeta_histogram_log.pdf, id=252, 462.52798pt x 346.89601pt>
+File: llbeta_histogram_log.pdf Graphic file (type pdf)
+<use llbeta_histogram_log.pdf>
+Package pdftex.def Info: llbeta_histogram_log.pdf  used on input line 519.
+(pdftex.def)             Requested size: 112.1983pt x 84.146pt.
+
+Overfull \hbox (4.99998pt too wide) in paragraph at lines 511--527
+[]$[]$$[]$ 
+ []
+
+
+Underfull \hbox (badness 4634) in paragraph at lines 551--563
+\OT1/lmr/m/n/9 (+20) Another new de-vel-op-ment came in 2021 when Tal
+ []
+
+
+Underfull \hbox (badness 5260) in paragraph at lines 551--563
+\OT1/lmr/m/n/9 (+20) Ohayon[[]] pub-lished Ex-tend-ed-Hy-per-LogLoc
+ []
+
+[5 <./hll_16380.pdf> <./llbeta_16380.pdf> <./llbeta_histogram.pdf> <./llbeta_hi
+stogram_log.pdf>]
+<mse.pdf, id=384, 722.7pt x 361.35pt>
+File: mse.pdf Graphic file (type pdf)
+<use mse.pdf>
+Package pdftex.def Info: mse.pdf  used on input line 619.
+(pdftex.def)             Requested size: 244.33128pt x 122.16264pt.
+<hll.pdf, id=386, 617.30624pt x 213.79875pt>
+File: hll.pdf Graphic file (type pdf)
+<use hll.pdf>
+Package pdftex.def Info: hll.pdf  used on input line 633.
+(pdftex.def)             Requested size: 244.33128pt x 84.62083pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<llbeta_histogram.pdf, id=213, 722.7pt x 361.35pt>
-File: llbeta_histogram.pdf Graphic file (type pdf)
-<use llbeta_histogram.pdf>
-Package pdftex.def Info: llbeta_histogram.pdf  used on input line 498.
-(pdftex.def)             Requested size: 244.33128pt x 122.16264pt.
- [4 <./hll_256.pdf>]
-Underfull \vbox (badness 3724) has occurred while \output is active []
-
-
-(./review.bbl
+ [6 <./mse.pdf> <./hll.pdf>] (./cardinalityEstimation.bbl
 LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 
 9.
- (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
+
+(/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1003,25 +1056,31 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 9.
- [5 <./hll_16380.pdf> <./llbeta_16380.pdf> <./llbeta_histogram.pdf>]
-Underfull \hbox (badness 1221) in paragraph at lines 24--27
+
+Underfull \hbox (badness 1221) in paragraph at lines 34--37
 []\OT1/lmr/m/n/8 (+20) Flajolet, Fusy, Gan-douet, and Me-u-nier
  []
 
-) [6
+[7]) [8
 
-] (./review.aux)
-Package rerunfilecheck Info: File `review.out' has not changed.
-(rerunfilecheck)             Checksum: 8363351EA6D6D534D932B5EDC6D201A0;1135.
+] (./cardinalityEstimation.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package rerunfilecheck Info: File `cardinalityEstimation.out' has not changed.
+(rerunfilecheck)             Checksum: AAB2F03978F99C3A24FA3B6F1C3B9D80;1151.
  ) 
 Here is how much of TeX's memory you used:
- 26237 strings out of 480121
- 505393 string characters out of 5892160
- 890774 words of memory out of 5000000
- 43557 multiletter control sequences out of 15000+600000
- 514415 words of font info for 134 fonts, out of 8000000 for 9000
+ 26291 strings out of 480121
+ 506523 string characters out of 5892160
+ 891646 words of memory out of 5000000
+ 43592 multiletter control sequences out of 15000+600000
+ 514585 words of font info for 136 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 84i,10n,89p,999b,995s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,10n,89p,1014b,995s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/share/texmf/fonts/enc/
 dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sha
 re/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/
@@ -1038,10 +1097,10 @@ b></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type
 1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/s
 hare/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on review.pdf (6 pages, 646631 bytes).
+Output written on cardinalityEstimation.pdf (8 pages, 714931 bytes).
 PDF statistics:
- 448 PDF objects out of 1000 (max. 8388607)
- 229 compressed objects within 3 object streams
- 44 named destinations out of 1000 (max. 500000)
- 23160 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 554 PDF objects out of 1000 (max. 8388607)
+ 275 compressed objects within 3 object streams
+ 56 named destinations out of 1000 (max. 500000)
+ 23175 words of extra memory for PDF output out of 24883 (max. 10000000)
 
