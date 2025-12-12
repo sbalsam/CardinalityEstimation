@@ -53,8 +53,7 @@ of large data streams - Qingjun Xiao, You Zhou, Shigang
 Chen")[https://www.cise.ufl.edu/~sgchen/Publications/XZC17.pdf].
 
 [ehll.py](ehll.py) an implementation of the Extended HyperLogLog algorithm
-(ExtendedHyperLogLog: Analysis of a new Cardinality Estimator 
-- Tal Ohayon, 2021)[https://arxiv.org/pdf/2106.06525]. 
+(ExtendedHyperLogLog: Analysis of a new Cardinality Estimator - Tal Ohayon, 2021)[https://arxiv.org/pdf/2106.06525]. 
 
 ## Jupyter Notebook
 
