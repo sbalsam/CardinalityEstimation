@@ -1,6 +1,6 @@
 # Cardinality Estimation of Distinct Elements
 
-This project is done as coursework for the course
+This project is done as coursework for the PhD course
 DT8116 - Mining of Massive Datasets, NTNU Norway.
 
 I want to give an overview of different solutions for the Count Distinct
