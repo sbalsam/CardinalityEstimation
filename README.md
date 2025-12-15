@@ -64,6 +64,10 @@ Chen")[https://www.cise.ufl.edu/~sgchen/Publications/XZC17.pdf].
 [ehll.py](ehll.py) an implementation of the Extended HyperLogLog algorithm
 (ExtendedHyperLogLog: Analysis of a new Cardinality Estimator - Tal Ohayon, 2021)[https://arxiv.org/pdf/2106.06525]. 
 
+[hll_martingale.py](hll_martingale.py) HyperLogLog in a martingale setting. 
+This gives a big improvement in estimation quality, but the sketch is not mergeable
+anymore.
+
 ## Jupyter Notebook
 
 The Jupyter notebook can be read [here](Cardinality.ipynb). It uses all the

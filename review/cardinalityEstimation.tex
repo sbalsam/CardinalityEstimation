@@ -106,18 +106,18 @@ that implement a certain data structure and an accompanying algorithm to store
 information efficient for cardinality estimation. I will follow the development
 chronologically from the first algorithm of Flajolet and Martin in 1985
 \cite{fm85}, to the HyperLogLog algorithm in 2007 and the HyperLogLog++
-algorighm in 2013 to the HLL-TailCut algorithm from 2017 and the
-ExtendedHyperLogLog in 2023. All of the discussed methods are based on the
-original method by Flajolet and Martin and we can follow the different problems
-and solutions researchers have found to improve the algorithm further and
-further. From a science history perspective, this paper presents in a
-chronological order all the improvements that have been madeo, often with
-surprising ideas. There are other methods that solve the given problem, as
-mentioned before, but I want to focus specifically on the history of
-improvements of the Flajolet \& Martin algorithm.
+algorighm in 2013 to the HLL-TailCut algorithm from 2017, the martingale
+setting of HyperLogLog in 2017 and the ExtendedHyperLogLog in 2023. All of the
+discussed methods are based on the original method by Flajolet and Martin and
+we can follow the different problems and solutions researchers have found to
+improve the algorithm further and further. From a science history perspective,
+this paper presents in a chronological order all the improvements that have
+been madeo, often with surprising ideas. There are other methods that solve the
+given problem, as mentioned before, but I want to focus specifically on the
+history of improvements of the Flajolet \& Martin algorithm.
 
 I will omit any mathematical proofs, as they can be found in the original
-sources, but I will specify any equations that are neccessary for understanding
+sources, but I will specify any equations that are necessary for understanding
 the algorithm. Most of the algorithms are implemented by myself in the
 accompanying repository \cite{repo} and have been used to verify and confirm
 the problems and results of the algorithms.
@@ -139,7 +139,7 @@ number of distinct items in a set in a space efficient way\cite{fm85}. Often
 this method is called Probabilistic Counting with Stochastic Averaging (PCSA)
 in the literature, I will refer to it as FM85. The idea behind the method is to
 use a hash function that maps $n$ items uniformly to integers. If we look at
-the registerary representation of these integers, and check the longest runs of
+the binary representation of these integers, and check the longest runs of
 zeros, in about $n/2$ cases, we have a '0' at any position. In about $n/4$
 cases, we have two '0's consecutively. With a chance of $1/8$ we have three '0'
 in a row, and so on. That means if we start for example at the right and count
@@ -153,8 +153,8 @@ multiple ($m$) registers of bitmaps are used. This is equivalent with running an
 experiment multiple times to get results closer to the expected value. With a
 higher number of registers available for the average, the estimation quality raises,
 but at the same time more memory to store the bitmap is needed. They use the
-hash value to decide the register or register (by using the modulo operation) and save the
-rightmost '1' of the registerary representation in this register.
+hash value to decide the register  (by using the modulo operation) and save the
+rightmost '1' of the binary representation in this register.
 
 \begin{algorithm}
 \caption{Adding an item in the Flajolet-Martin algorithm.}
@@ -272,7 +272,7 @@ algorithm called HyperLogLog (HLL).
 When we try to estimate the number of items, in the
 FM85 algorithm, we look for the maximum number of '1' in the bit registers. All the other '1'
 before and any bits after this position are not used. So instead of saving the
-complete bit register, it should be enough to just save the maximum number. 
+complete register, it should be enough to just save the maximum number. 
 In addition, since we have a maximum of 32 bits originally in the
 register, we only need 5 bits ($2^5=32$) for this number to be stored for each
 register. This is an additional memory reduction. Instead of 1kB of memory as in the
@@ -521,8 +521,9 @@ If we only store registers up to a size of 16, we only need 4 bits.
 		\label{fig:llbetaspike}
 	\end{subfigure}
 	\caption{This histogram shows the frequency of the numbers in the registers for
-	LLBeta with $m=2^{16}$ for 10 Million items. Even though, they are not visible in the figure, there
-	are values up to 28, although with a very low frequency. That means we have a long
+	LLBeta with $m=2^{16}$ for 10 Million items. Even though, they are not visible 
+	in the left figure, there are values up to 28, although with a very low 
+	frequency, as shown in the log scaled histogram on the right. That means we have a long
 	tail to the right side with registers of little information as shown on the right with 
 	the log scale.}
 	\label{fig:hll_spike} 
@@ -544,6 +545,53 @@ that this is unfortunately not true, the error is constant and independent of $m
 But \cite{Apache2019} has an implementation which uses 4 bits. The method of
 tail cutting works and can reduce the amount needed for memory with 20\% (from 5 bits
 to 4 bits).
+
+\section{Mergeble sketches and Martingale settings}
+
+In 2007, Daniel Ting \cite{Ting2014} found another method for better predictions.
+If the different items are presented as a stream, we can view this stream as a
+Markov process with martingale properties, that means the expected value of the 
+next observation is equal to the most recent value. We can now use the
+sketch as a predictor with Markov probabilities. The changes in the algorithm
+are minimal. Every time the sketch is updated, we calculate the probability with 
+$$
+	q(S) = \frac{1}{m}\sum_{i=1}^m 2^{-S[i]}
+$$
+and we can update the martingale Estimator $N$ with
+$$
+	N_{new} = N + \frac{1}{q(S)}.
+$$
+
+The idea behind this is, that the sketch in its consecutive updates forms
+a Markov process and this series of updates contains information that would
+be thrown away in a mergeable setting. But if we follow the series, we can
+use it to derive an estimator from the process as a whole. This is the 
+martingale estimator, that is updated in each step for a new unseen item.
+
+\begin{figure}[htb]
+	\includegraphics[width=1.0\linewidth]{martingale.pdf}
+	\caption{Mean squared error of HLL and HLL in martingale setting for cardinalities up to $10^6$ and $m=2^8$ The average
+	MSE for EHLL is 0.0056, the avg. MSE for HLL is 0.0086. }
+	\label{fig:martingale}
+\end{figure}
+
+Figure \ref{fig:martingale} shows the result for my implementation of the HLL
+sketch in martingale setting, and we can see that this estimation is much
+better than the plan HLL sketch. The plain HLL sketch needs about 1.5 more bits
+than the martingale version for the same estimation quality. But there is one
+catch to this. Since each estimate depends on the prior result, the sketch can
+not be run in parallel in multiple threads.
+We do not need any additional memory for the martingale enhancement of the
+sketch, as we only need to update the value of the estimator, each time we
+update the sketch. There is only one additional float value to store.
+
+All other sketches that have been presented so far are mergeable sketches, that
+means we can count items in different threads or on different locations and 
+can merge the result, simply by merging the registers and get a new  
+estimation. In a martingale setting, this is no longer possible. But for most
+streaming applications, that would not be a problem, as long as the algorithm
+can follow the entire stream and we don't process different sources on multiple 
+locations. The martingale setting is therefore a big improvement for this algorithm. 
 
 \section{Using Additional Bits}
 %https://arxiv.org/pdf/2106.06525
@@ -624,8 +672,9 @@ that can be corrected with the methods described in HLL++ and HLLBeta.
 
 Figure \ref{fig:mse} shows the MSE of EHLL and HLL with values for $m$ chosen in a way, 
 that both methods would use the same memory ($m_{EHLL} = 6/5 m_{HLL}$). The figure
-shows that we get a better error for EHLL than for HLL with the same memory
-usage.
+shows that we get a lower error for EHLL than for HLL with the same memory
+usage. The difference of these results are valid even in a martingale setting
+as Ohayon can show.
 %(https://arxiv.org/pdf/2308.16862)
 
 
@@ -663,7 +712,8 @@ low variance. The algorithm of UltraLogLog and ExaLogLog also specifies
 corrections for small and large ranges of cardinality and analyzes performance
 and compression possibilities.
 
-\section{Mergeble sketches and Martingale settings}
+
+\section{Conclusion}
 
 \begin{table*}[t]
 \label{tbl:methods}
@@ -676,37 +726,13 @@ and compression possibilities.
 	FM85 & 1985 & $1.3/\sqrt{m}$ & $32\cdot m$ & probabilistic counting of bits \\
 	HLL & 2007 & $1.04/\sqrt{m}$ & $5\cdot m$  & harmonic mean, corrections for small and big cardinalities \\
 	HLL++ & 2013 & $1.04/\sqrt{m}$ & $\leq 6\cdot m$ & using 6 bits, empirical bias correction \\ 
+	HLL Martingale & 2014 & $<1.04/\sqrt{m}$ & $5 \cdot m$ & non mergeable sketches \\ 
 	LogLogBeta & 2016 & $1.04/\sqrt{m}$ & $\leq 6\cdot m$ & better quality for low cardinalities\\
 	HLL-TailCut & 2017 & $1.04/\sqrt{m}$ & $4 \cdot m$ & truncated registers for lower memory consumption\\ 
-	ExHLL & 2023 & $1.0/\sqrt{m}$ & $6 \cdot m$ & using 1 additional bit below maximum per register\\ 
+	ExHLL & 2023 & $<1.04/\sqrt{m}$ & $6 \cdot m$ & using 1 additional bit below maximum per register\\ 
 \end{tabular}
 \end{center}
 \end{table*}
-
-Here I should have some additional remarks about
-the Martingale settings that have not been discussed before.
-Here I should have some additional remarks about
-the Martingale settings that have not been discussed before.
-Here I should have some additional remarks about
-the Martingale settings that have not been discussed before.
-Here I should have some additional remarks about
-the Martingale settings that have not been discussed before.
-Here I should have some additional remarks about
-the Martingale settings that have not been discussed before.
-Here I should have some additional remarks about
-the Martingale settings that have not been discussed before.
-Here I should have some additional remarks about
-the Martingale settings that have not been discussed before.
-Here I should have some additional remarks about
-the Martingale settings that have not been discussed before.
-Here I should have some additional remarks about
-the Martingale settings that have not been discussed before.
-Here I should have some additional remarks about
-the Martingale settings that have not been discussed before.
-
-
-\section{Conclusion}
-
 
 In this paper I wanted to show the progressive improvements, that were made on
 an algorithm, that already was based on an impressive idea 40 years ago. Each
@@ -731,7 +757,9 @@ fewer bits to store the maximum values. Then again, using extra bits below the
 maximum value for each register can be used to improve the quality even
 further. EHLL uses one extra bit, and UltraLogLog even two extra bits for the
 lowest memory-variance-product, as it can be proven that there is an optimal
-balance between memory and estimation quality.
+balance between memory and estimation quality. We also saw, that if we do not
+need the sketch to be mergeable, we can use a martingale estimator of the
+sketch, that would improve the estimation quality even more.
 
 There are some threats for validity that have to be mentioned here for this
 paper. This is a narrative and not a systematic review. My choice for inclusion
@@ -750,6 +778,9 @@ solutions (registers on a bit level), as I did not focus on it. In a lower
 level language this could be implemented very easy, but would not change the
 results of the included figures.
 
+We can see, that the development of Flajolet's original sketch has not stopped
+in the last 40 years and researchers still find better ways to improve on the
+idea by adding new insights and building upon their predecessors. 
 
 
 \small
