@@ -2,101 +2,128 @@
 
 \bibitem[Amazon, 2020]{redshift2025}
 Amazon (2020).
-\newblock Amazon redshift announces support for hyperloglog sketches.
+\newblock Amazon {{Redshift}} announces support for {{HyperLogLog}} sketches.
 
 \bibitem[Balsam, 2025]{repo}
-Balsam (2025).
-\newblock \url{https://github.com/sbalsam/CardinalityEstimation/}.
+Balsam, S. (2025).
+\newblock {{https://github.com/sbalsam/CardinalityEstimation/}}.
 
 \bibitem[Chakraborty et~al., 2023]{cvm2023}
-Chakraborty, Vinodchandran, and Meel (2023).
-\newblock Distinct elements in streams: An algorithm for the (text) book.
+Chakraborty, S., Vinodchandran, N.~V., and Meel, K.~S. (2023).
+\newblock Distinct {{Elements}} in {{Streams}}: {{An Algorithm}} for the
+  ({{Text}}) {{Book}}.
 
 \bibitem[Dragonfly, 2025]{dragonfly2025}
 Dragonfly (2025).
-\newblock Dragonfly db docs.
+\newblock {{DragonFly DB Docs}}.
 
 \bibitem[Durand and Flajolet, 2003]{Durand2003}
-Durand and Flajolet (2003).
-\newblock Loglog counting of large cardinalities.
+Durand, M. and Flajolet, P. (2003).
+\newblock Loglog {{Counting}} of {{Large Cardinalities}}.
+\newblock In Goos, G., Hartmanis, J., Van~Leeuwen, J., Di~Battista, G., and
+  Zwick, U., editors, {\em Algorithms - {{ESA}} 2003}, volume 2832, pages
+  605--617. Springer Berlin Heidelberg, Berlin, Heidelberg.
 
 \bibitem[Ertl, 2024]{Ertl2024}
 Ertl, O. (2024).
-\newblock Ultraloglog: A practical and more space-efficient alternative to
-  hyperloglog for approximate distinct counting.
+\newblock {{UltraLogLog}}: {{A Practical}} and {{More Space-Efficient
+  Alternative}} to {{HyperLogLog}} for {{Approximate Distinct Counting}}.
+\newblock {\em Proceedings of the VLDB Endowment}, 17(7):1655--1668.
 
 \bibitem[Ertl, 2025]{Ertl2025}
 Ertl, O. (2025).
-\newblock Exaloglog: Space-efficient and practical approximate distinct
-  counting up to the exa-scale.
+\newblock {{ExaLogLog}}: {{Space-Efficient}} and {{Practical Approximate
+  Distinct Counting}} up to the {{Exa-Scale}}.
 
 \bibitem[Flajolet et~al., 2007]{Flajolet2007}
-Flajolet, Fusy, Gandouet, and Meunier (2007).
-\newblock Hyperloglog: the analysis of a near-optimal cardinality estimation
-  algorithm.
+Flajolet, P., Fusy, {\'E}., Gandouet, O., and Meunier, F. (2007).
+\newblock {{HyperLogLog}}: The analysis of a near-optimal cardinality
+  estimation algorithm.
+\newblock {\em Discrete Mathematics \& Theoretical Computer Science}, DMTCS
+  Proceedings vol. AH,...(Proceedings):3545.
 
-\bibitem[Flajolet and Martin, 1985]{fm85}
-Flajolet, P. and Martin, G.~N. (1985).
+\bibitem[Flajolet and Nigel~Martin, 1985]{fm85}
+Flajolet, P. and Nigel~Martin, G. (1985).
 \newblock Probabilistic counting algorithms for data base applications.
+\newblock {\em Journal of Computer and System Sciences}, 31(2):182--209.
+
+\bibitem[Foundation, 2019]{Apache2019}
+Foundation, T.~A. (2019).
+\newblock Apache {{DataSketches}}: {{A}} software library of stochastic stream-
+  ing algorithms. \textbackslash
+  url\textbraceleft{{https://datasketches.apache.org/\textbraceright.}}
 
 \bibitem[Heule et~al., 2013]{Heule2013}
-Heule, Nunkesser, and Hall (2013).
-\newblock Hyperloglog in practice: Algorithmic engineering of a state of the
-  art cardinality estimation algorithm.
+Heule, S., Nunkesser, M., and Hall, A. (2013).
+\newblock {{HyperLogLog}} in practice: Algorithmic engineering of a state of
+  the art cardinality estimation algorithm.
+\newblock In {\em Proceedings of the 16th {{International Conference}} on
+  {{Extending Database Technology}}}, pages 683--692, Genoa Italy. ACM.
 
 \bibitem[Liu et~al., 2015]{Liu2015}
-Liu, Xu, Yu, Covinelli, and ZuZarte (2015).
+Liu, H., Xu, M., Yu, Z., Corvinelli, V., and Zuzarte, C. (2015).
 \newblock Cardinality estimation using neural networks.
+\newblock {\em Proceedings of the 25th Annual International Conference on
+  Computer Science and Software Engineering}, pages 53--59.
 
 \bibitem[Ohayon, 2021]{Ohayon2021}
-Ohayon (2021).
-\newblock Extendedhyperloglog: Analysis of a new cardinality estimator.
+Ohayon, T. (2021).
+\newblock {{ExtendedHyperLogLog}}: {{Analysis}} of a new {{Cardinality
+  Estimator}}.
 
 \bibitem[Pettie and Wang, 2020]{Pettie2020}
-Pettie and Wang (2020).
-\newblock Information theoretic limits of cardinality estimation: Fisher meets
-  shannon.
+Pettie, S. and Wang, D. (2020).
+\newblock Information {{Theoretic Limits}} of {{Cardinality Estimation}}:
+  {{Fisher Meets Shannon}}.
 
-\bibitem[Qin et~al., 2016]{Qin2016}
-Qin, Kim, and Tung (2016).
-\newblock Loglog-beta and more: A new algorithm for cardinality estimation
-  based on loglog counting.
+\bibitem[Qin et~al., 2016]{Quin2016}
+Qin, J., Kim, D., and Tung, Y. (2016).
+\newblock {{LogLog-Beta}} and {{More}}: {{A New Algorithm}} for {{Cardinality
+  Estimation Based}} on {{LogLog Counting}}.
 
 \bibitem[Redis, 2025]{redis2025}
 Redis (2025).
-\newblock Hyperloglog docs.
+\newblock {{HyperLogLog Docs}}.
 
 \bibitem[Scheuermann and Mauve, 2007]{Scheuermann2007}
-Scheuermann and Mauve (2007).
-\newblock Near-optimal compression of probabilistic counting sketches for
-  networking applications.
+Scheuermann, B. and Mauve, M. (2007).
+\newblock Near-{{Optimal Compression}} of {{Probabilistic Counting Sketches}}
+  for {{Networking Applications}}.
 
 \bibitem[Schwabe and Acosta, 2024]{Schwabe2024}
-Schwabe and Acosta (2024).
-\newblock Cardinality estimation over knowledge graphs with embeddings and
-  graph neural networks.
-
-\bibitem[{The Apache Foundation}, 2019]{Apache2019}
-{The Apache Foundation} (2019).
-\newblock Apache datasketches: A software library of stochastic stream- ing
-  algorithms. \url{https://datasketches.apache.org/}.
+Schwabe, T. and Acosta, M. (2024).
+\newblock Cardinality {{Estimation}} over {{Knowledge Graphs}} with
+  {{Embeddings}} and {{Graph Neural Networks}}.
+\newblock {\em Proceedings of the ACM on Management of Data}, 2(1):1--26.
 
 \bibitem[Ting, 2014]{Ting2014}
-Ting (2014).
-\newblock Streamed approximate counting of distinct elements: beating optimal
+Ting, D. (2014).
+\newblock Streamed approximate counting of distinct elements: Beating optimal
   batch methods.
+\newblock In {\em Proceedings of the 20th {{ACM SIGKDD}} International
+  Conference on {{Knowledge}} Discovery and Data Mining}, pages 442--451, New
+  York New York USA. ACM.
 
 \bibitem[Wang and Pettie, 2023]{Wang2023}
-Wang and Pettie (2023).
-\newblock Better cardinality estimators for hyperloglog, pcsa, and beyond.
+Wang, D. and Pettie, S. (2023).
+\newblock Better {{Cardinality Estimators}} for {{HyperLogLog}}, {{PCSA}}, and
+  {{Beyond}}.
+\newblock In {\em Proceedings of the 42nd {{ACM SIGMOD-SIGACT-SIGAI Symposium}}
+  on {{Principles}} of {{Database Systems}}}, pages 317--327, Seattle WA USA.
+  ACM.
 
 \bibitem[Woltmann et~al., 2019]{Woltmann2019}
-Woltmann, Hartmann, Thiele, Habich, and Lehner (2019).
+Woltmann, L., Hartmann, C., Thiele, M., Habich, D., and Lehner, W. (2019).
 \newblock Cardinality estimation with local deep learning models.
+\newblock In {\em Proceedings of the {{Second International Workshop}} on
+  {{Exploiting Artificial Intelligence Techniques}} for {{Data Management}}},
+  pages 1--8, Amsterdam Netherlands. ACM.
 
-\bibitem[Xuao et~al., 2017]{Xuao2017}
-Xuao, Zhou, and Chen (2017).
-\newblock Better with fewer bits: Improving the performance of cardinality
+\bibitem[Xiao et~al., 2017]{Xuao2017}
+Xiao, Q., Zhou, Y., and Chen, S. (2017).
+\newblock Better with fewer bits: {{Improving}} the performance of cardinality
   estimation of large data streams.
+\newblock In {\em {{IEEE INFOCOM}} 2017 - {{IEEE Conference}} on {{Computer
+  Communications}}}, pages 1--9, Atlanta, GA, USA. IEEE.
 
 \end{thebibliography}

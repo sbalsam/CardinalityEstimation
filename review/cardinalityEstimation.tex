@@ -448,7 +448,7 @@ spikes.
 
 \section{LogLogBeta}
 
-In 2016, \cite{Qin2016} used the results of HLL++ to improve the algorithm
+In 2016, \cite{Quin2016} used the results of HLL++ to improve the algorithm
 even further. While HLL++ still needed linear counting for small cardinalities
 and a bias correction to handle the transition between linear counting and
 the usual harmonic mean calculation, LogLog-$\beta$ (LogLogBeta) simplifies
@@ -512,13 +512,13 @@ If we only store registers up to a size of 16, we only need 4 bits.
 		\centering
 		\includegraphics[width=0.9\linewidth]{llbeta_histogram.pdf}
 		\caption{Histogram}
-		\label{fig:hllspike}
+		\label{fig:hist}
 	\end{subfigure}%
 	\begin{subfigure}{.25\textwidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{llbeta_histogram_log.pdf}
 		\caption{Histogram with log scale}
-		\label{fig:llbetaspike}
+		\label{fig:histlog}
 	\end{subfigure}
 	\caption{This histogram shows the frequency of the numbers in the registers for
 	LLBeta with $m=2^{16}$ for 10 Million items. Even though, they are not visible 
@@ -526,7 +526,7 @@ If we only store registers up to a size of 16, we only need 4 bits.
 	frequency, as shown in the log scaled histogram on the right. That means we have a long
 	tail to the right side with registers of little information as shown on the right with 
 	the log scale.}
-	\label{fig:hll_spike} 
+	\label{fig:histogram} 
 \end{figure}
 
 Registers with a maximum value of 16, can count up to $2^{16}=65536$. But since

@@ -1,122 +1,278 @@
-@article{fm85,
-	title = {Probabilistic Counting Algorithms for Data Base Applications},
-	author = {Flajolet, Philippe and Martin, G. Nigel},
-	year = {1985},
-}
-@article{Woltmann2019,
-	title = {Cardinality estimation with local deep learning models},
-	author = {Woltmann and Hartmann and Thiele and Habich and Lehner},
-	year = {2019},
-}
-@article{cvm2023,
-	title = {Distinct Elements in Streams: An Algorithm for the (Text) Book},
-	author = {Chakraborty and Vinodchandran and Meel},
-	year = {2023},
-}
-@article{Schwabe2024,
-	title = {Cardinality Estimation over Knowledge Graphs with Embeddings and Graph Neural Networks},
-	author = {Schwabe and Acosta},
-	year = {2024},
-}
-@article{Liu2015,
-	title = {Cardinality estimation using neural networks},
-	author = {Liu and Xu and Yu and Covinelli and ZuZarte},
-	year = {2015},
-}
-@article{Durand2003,
-	title = {Loglog Counting of Large Cardinalities},
-	author = {Durand and Flajolet},
-	year = {2003}
-}
-@article{Flajolet2007,
-	title = {HyperLogLog: the analysis of a near-optimal cardinality estimation algorithm},
-	author = {Flajolet and Fusy and Gandouet and Meunier},
-	year = {2007}
-}
-@article{Scheuermann2007,
-	title = {Near-Optimal Compression of Probabilistic Counting Sketches for Networking Applications},
-	author = {Scheuermann and Mauve},
-	year = {2007}
-}
-@article{Heule2013,
-	title = {HyperLogLog in Practice: Algorithmic Engineering of a State of The Art Cardinality Estimation Algorithm},
-	author = {Heule and Nunkesser and Hall},
-	year = {2013}
-}
-@article{Qin2016,
-	title = {LogLog-Beta and More: A New Algorithm for Cardinality Estimation Based on LogLog Counting},
-	author = {Qin and Kim and Tung},
-	year = {2016}
-}
-@article{redis2025,
-	title = {HyperLogLog Docs},
-	author = {Redis},
-	url = {https://redis.io/docs/latest/develop/data-types/probabilistic/hyperloglogs/},
-	year = {2025}
-}
-@article{dragonfly2025,
-	title = {DragonFly DB Docs},
-	author = {Dragonfly},
-	url = {https://www.dragonflydb.io/docs/category/hyperloglog/},
-	year = {2025}
-}
-@article{redshift2025,
-	title = {Amazon Redshift announces support for HyperLogLog sketches},
-	author = {Amazon},
-	url = {https://aws.amazon.com/about-aws/whats-new/2020/10/amazon-redshift-announces-support-hyperloglog-sketches/},
-	year = {2020}
-}
-@article{Xuao2017,
-	title = {Better with Fewer Bits: Improving the Performance
-of Cardinality Estimation of Large Data Streams},
-	author = {Xuao and Zhou and Chen},
-	year = {2017}
-}
-@article{Pettie2020,
-	title = {Information Theoretic Limits of Cardinality Estimation:
-Fisher Meets Shannon},
-	author = {Pettie and Wang},
-	year = {2020}
-}
 @article{Apache2019,
-	title = {Apache DataSketches: A software library of stochastic stream-
-ing algorithms. \url{https://datasketches.apache.org/}.},
-	author = {{The Apache Foundation}},
-	year = {2019}
+  title = {Apache {{DataSketches}}: {{A}} Software Library of Stochastic Stream- Ing Algorithms. \textbackslash url\textbraceleft{{https://datasketches.apache.org/\textbraceright.}}},
+  author = {The Apache Foundation},
+  year = 2019
 }
-@article{repo,
-	title = {\url{https://github.com/sbalsam/CardinalityEstimation/}},
-	author = {Balsam},
-	year = {2025}
+
+@article{cvm2023,
+  title = {Distinct {{Elements}} in {{Streams}}: {{An Algorithm}} for the ({{Text}}) {{Book}}},
+  shorttitle = {Distinct {{Elements}} in {{Streams}}},
+  author = {Chakraborty, Sourav and Vinodchandran, N. V. and Meel, Kuldeep S.},
+  year = 2023,
+  publisher = {arXiv},
+  doi = {10.48550/ARXIV.2301.10191},
+  urldate = {2025-12-15},
+  abstract = {Given a data stream \$\textbackslash mathcal\textbraceleft A\textbraceright{} = \textbackslash langle a\_1, a\_2, \textbackslash ldots, a\_m \textbackslash rangle\$ of \$m\$ elements where each \$a\_i \textbackslash in [n]\$, the Distinct Elements problem is to estimate the number of distinct elements in \$\textbackslash mathcal\textbraceleft A\textbraceright\$.Distinct Elements has been a subject of theoretical and empirical investigations over the past four decades resulting in space optimal algorithms for it.All the current state-of-the-art algorithms are, however, beyond the reach of an undergraduate textbook owing to their reliance on the usage of notions such as pairwise independence and universal hash functions. We present a simple, intuitive, sampling-based space-efficient algorithm whose description and the proof are accessible to undergraduates with the knowledge of basic probability theory.},
+  copyright = {arXiv.org perpetual, non-exclusive license},
+  keywords = {Data Structures and Algorithms (cs.DS),Databases (cs.DB),FOS: Computer and information sciences}
 }
-@article{Ohayon2021,
-	title = {ExtendedHyperLogLog: Analysis of a new Cardinality Estimator},
-	author = {Ohayon},
-	year = {2021}
+
+@article{dragonfly2025,
+  title = {{{DragonFly DB Docs}}},
+  author = {Dragonfly},
+  year = 2025
 }
+
+@incollection{Durand2003,
+  title = {Loglog {{Counting}} of {{Large Cardinalities}}},
+  booktitle = {Algorithms - {{ESA}} 2003},
+  author = {Durand, Marianne and Flajolet, Philippe},
+  editor = {Goos, Gerhard and Hartmanis, Juris and Van Leeuwen, Jan and Di Battista, Giuseppe and Zwick, Uri},
+  year = 2003,
+  volume = {2832},
+  pages = {605--617},
+  publisher = {Springer Berlin Heidelberg},
+  address = {Berlin, Heidelberg},
+  doi = {10.1007/978-3-540-39658-1_55},
+  urldate = {2025-12-15},
+  isbn = {978-3-540-20064-2 978-3-540-39658-1}
+}
+
 @article{Ertl2024,
-	title = {UltraLogLog: A Practical and More Space-Efficient Alternative 
-	to HyperLogLog for Approximate Distinct Counting},
-	author = {Ertl, Otmar},
-	year = {2024}
-}
-@article{Ertl2025,
-	title = {ExaLogLog: Space-Efficient and Practical Approximate
-Distinct Counting up to the Exa-Scale},
-	author = {Ertl, Otmar},
-	year = {2025}
-}
-@article{Ting2014,
-	title = {Streamed approximate counting of distinct elements: beating
-optimal batch methods},
-	author = {Ting},
-	year = {2014}
-}
-
-@article{Wang2023,
-	title = {Better Cardinality Estimators for HyperLogLog,
-PCSA, and Beyond},
-	author = {Wang and Pettie},
-	year = {2023}
+  title = {{{UltraLogLog}}: {{A Practical}} and {{More Space-Efficient Alternative}} to {{HyperLogLog}} for {{Approximate Distinct Counting}}},
+  shorttitle = {{{UltraLogLog}}},
+  author = {Ertl, Otmar},
+  year = 2024,
+  month = mar,
+  journal = {Proceedings of the VLDB Endowment},
+  volume = {17},
+  number = {7},
+  eprint = {2308.16862},
+  primaryclass = {cs},
+  pages = {1655--1668},
+  issn = {2150-8097},
+  doi = {10.14778/3654621.3654632},
+  urldate = {2025-12-15},
+  abstract = {Since its invention HyperLogLog has become the standard algorithm for approximate distinct counting. Due to its space efficiency and suitability for distributed systems, it is widely used and also implemented in numerous databases. This work presents UltraLogLog, which shares the same practical properties as HyperLogLog. It is commutative, idempotent, mergeable, and has a fast guaranteed constant-time insert operation. At the same time, it requires 28\% less space to encode the same amount of distinct count information, which can be extracted using the maximum likelihood method. Alternatively, a simpler and faster estimator is proposed, which still achieves a space reduction of 24\%, but at an estimation speed comparable to that of HyperLogLog. In a non-distributed setting where martingale estimation can be used, UltraLogLog is able to reduce space by 17\%. Moreover, its smaller entropy and its 8-bit registers lead to better compaction when using standard compression algorithms. All this is verified by experimental results that are in perfect agreement with the theoretical analysis which also outlines potential for even more space-efficient data structures. A production-ready Java implementation of UltraLogLog has been released as part of the open-source Hash4j library.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Data Structures and Algorithms,Computer Science - Databases},
+  file = {C:\Users\sebas\Zotero\storage\ZPWJVBF7\Ertl - 2024 - UltraLogLog A Practical and More Space-Efficient Alternative to HyperLogLog for Approximate Distinc.pdf}
 }
 
+@misc{Ertl2025,
+  title = {{{ExaLogLog}}: {{Space-Efficient}} and {{Practical Approximate Distinct Counting}} up to the {{Exa-Scale}}},
+  shorttitle = {{{ExaLogLog}}},
+  author = {Ertl, Otmar},
+  year = 2025,
+  publisher = {OpenProceedings.org},
+  doi = {10.48786/EDBT.2025.67},
+  urldate = {2025-12-15},
+  abstract = {This work introduces ExaLogLog, a new data structure for approximate distinct counting, which has the same practical properties as the popular HyperLogLog algorithm. It is commutative, idempotent, mergeable, reducible, has a constant-time insert operation, and supports distinct counts up to the exa-scale. At the same time, as theoretically derived and experimentally verified, it requires 43 \% less space to achieve the same estimation error.},
+  langid = {english},
+  keywords = {Database Technology},
+  file = {C:\Users\sebas\Zotero\storage\AYRWQBQP\Ertl - 2025 - ExaLogLog Space-Efficient and Practical Approximate Distinct Counting up to the Exa-Scale.pdf}
+}
+
+@article{Flajolet2007,
+  title = {{{HyperLogLog}}: The Analysis of a near-Optimal Cardinality Estimation Algorithm},
+  shorttitle = {{{HyperLogLog}}},
+  author = {Flajolet, Philippe and Fusy, {\'E}ric and Gandouet, Olivier and Meunier, Fr{\'e}d{\'e}ric},
+  year = 2007,
+  month = jan,
+  journal = {Discrete Mathematics \& Theoretical Computer Science},
+  volume = {DMTCS Proceedings vol. AH,...},
+  number = {Proceedings},
+  pages = {3545},
+  issn = {1365-8050},
+  doi = {10.46298/dmtcs.3545},
+  urldate = {2025-12-15},
+  abstract = {This extended abstract describes and analyses a near-optimal probabilistic algorithm, HYPERLOGLOG, dedicated to estimating the number of \textbackslash emphdistinct elements (the cardinality) of very large data ensembles. Using an auxiliary memory of m units (typically, "short bytes''), HYPERLOGLOG performs a single pass over the data and produces an estimate of the cardinality such that the relative accuracy (the standard error) is typically about \$1.04/\textbackslash sqrt\textbraceleft m\textbraceright\$. This improves on the best previously known cardinality estimator, LOGLOG, whose accuracy can be matched by consuming only 64\% of the original memory. For instance, the new algorithm makes it possible to estimate cardinalities well beyond \$10\textasciicircum 9\$ with a typical accuracy of 2\% while using a memory of only 1.5 kilobytes. The algorithm parallelizes optimally and adapts to the sliding window model.},
+  langid = {english},
+  file = {C:\Users\sebas\Zotero\storage\M4MASADA\Flajolet et al. - 2007 - HyperLogLog the analysis of a near-optimal cardinality estimation algorithm.pdf}
+}
+
+@article{fm85,
+  title = {Probabilistic Counting Algorithms for Data Base Applications},
+  author = {Flajolet, Philippe and Nigel Martin, G.},
+  year = 1985,
+  month = oct,
+  journal = {Journal of Computer and System Sciences},
+  volume = {31},
+  number = {2},
+  pages = {182--209},
+  issn = {00220000},
+  doi = {10.1016/0022-0000(85)90041-8},
+  urldate = {2025-12-15},
+  copyright = {https://www.elsevier.com/tdm/userlicense/1.0/},
+  langid = {english},
+  file = {C:\Users\sebas\Zotero\storage\YX6FT454\Flajolet og Nigel Martin - 1985 - Probabilistic counting algorithms for data base applications.pdf}
+}
+
+@inproceedings{Heule2013,
+  title = {{{HyperLogLog}} in Practice: Algorithmic Engineering of a State of the Art Cardinality Estimation Algorithm},
+  shorttitle = {{{HyperLogLog}} in Practice},
+  booktitle = {Proceedings of the 16th {{International Conference}} on {{Extending Database Technology}}},
+  author = {Heule, Stefan and Nunkesser, Marc and Hall, Alexander},
+  year = 2013,
+  month = mar,
+  pages = {683--692},
+  publisher = {ACM},
+  address = {Genoa Italy},
+  doi = {10.1145/2452376.2452456},
+  urldate = {2025-12-15},
+  abstract = {Cardinality estimation has a wide range of applications and is of particular importance in database systems. Various algorithms have been proposed in the past, and the HyperLogLog algorithm is one of them. In this paper, we present a series of improvements to this algorithm that reduce its memory requirements and significantly increase its accuracy for an important range of cardinalities. We have implemented our proposed algorithm for a system at Google and evaluated it empirically, comparing it to the original HyperLogLog algorithm. Like HyperLogLog, our improved algorithm parallelizes perfectly and computes the cardinality estimate in a single pass.},
+  isbn = {978-1-4503-1597-5},
+  langid = {english},
+  file = {C:\Users\sebas\Zotero\storage\V3YBC4DV\Heule et al. - 2013 - HyperLogLog in practice algorithmic engineering of a state of the art cardinality estimation algori.pdf}
+}
+
+@article{Liu2015,
+  title = {Cardinality Estimation Using Neural Networks},
+  author = {Liu, Henry and Xu, Mingbin and Yu, Ziting and Corvinelli, Vincent and Zuzarte, Callisto},
+  year = 2015,
+  journal = {Proceedings of the 25th Annual International Conference on Computer Science and Software Engineering},
+  pages = {53--59}
+}
+
+@misc{Ohayon2021,
+  title = {{{ExtendedHyperLogLog}}: {{Analysis}} of a New {{Cardinality Estimator}}},
+  shorttitle = {{{ExtendedHyperLogLog}}},
+  author = {Ohayon, Tal},
+  year = 2021,
+  publisher = {arXiv},
+  doi = {10.48550/ARXIV.2106.06525},
+  urldate = {2025-12-15},
+  abstract = {We discuss the problem of counting distinct elements in a stream. A stream is usually considered as a sequence of elements that come one at a time. An exact solution to the problem requires memory space of the size of the stream. For many applications this solution is infeasible due to very large streams. The solution in that case, is to use a probabilistic data structure (also called sketch), from which we can estimate with high accuracy the cardinality of the stream. We present a new algorithm, ExtendedHyperLogLog (EHLL), which is based on the state-of-the-art algorithm, HyperLogLog (HLL). In order to achieve the same accuracy as HLL, EHLL uses 16\% less memory. In recent years, a martingale approach has bean developed. In the martingale setting we receive better accuracy at the price of not being able to merge sketches. EHLL also works in the martingale setting. Martingale EHLL achieves the same accuracy as Martingale HLL using 12\% less memory.},
+  copyright = {arXiv.org perpetual, non-exclusive license},
+  keywords = {Data Structures and Algorithms (cs.DS),FOS: Computer and information sciences}
+}
+
+@misc{Pettie2020,
+  title = {Information {{Theoretic Limits}} of {{Cardinality Estimation}}: {{Fisher Meets Shannon}}},
+  shorttitle = {Information {{Theoretic Limits}} of {{Cardinality Estimation}}},
+  author = {Pettie, Seth and Wang, Dingyu},
+  year = 2020,
+  publisher = {arXiv},
+  doi = {10.48550/ARXIV.2007.08051},
+  urldate = {2025-12-15},
+  abstract = {Estimating the cardinality (number of distinct elements) of a large multiset is a classic problem in streaming and sketching, dating back to Flajolet and Martin's classic Probabilistic Counting (PCSA) algorithm from 1983. In this paper we study the intrinsic tradeoff between the space complexity of the sketch and its estimation error in the random oracle model. We define a new measure of efficiency for cardinality estimators called the Fisher-Shannon (Fish) number \$\textbackslash mathcal\textbraceleft H\textbraceright/\textbackslash mathcal\textbraceleft I\textbraceright\$. It captures the tension between the limiting Shannon entropy (\$\textbackslash mathcal\textbraceleft H\textbraceright\$) of the sketch and its normalized Fisher information (\$\textbackslash mathcal\textbraceleft I\textbraceright\$), which characterizes the variance of a statistically efficient, asymptotically unbiased estimator. Our results are as follows. We prove that all base-\$q\$ variants of Flajolet and Martin's PCSA sketch have Fish-number \$H\_0/I\_0 \textbackslash approx 1.98016\$ and that every base-\$q\$ variant of (Hyper)LogLog has Fish-number worse than \$H\_0/I\_0\$, but that they tend to \$H\_0/I\_0\$ in the limit as \$q\textbackslash rightarrow \textbackslash infty\$. Here \$H\_0,I\_0\$ are precisely defined constants. We describe a sketch called Fishmonger that is based on a smoothed, entropy-compressed variant of PCSA with a different estimator function. It is proved that with high probability, Fishmonger processes a multiset of \$[U]\$ such that at all times, its space is \$O(\textbackslash log\textasciicircum 2\textbackslash log U) + (1+o(1))(H\_0/I\_0)b \textbackslash approx 1.98b\$ bits and its standard error is \$1/\textbackslash sqrt\textbraceleft b\textbraceright\$. We give circumstantial evidence that \$H\_0/I\_0\$ is the optimum Fish-number of mergeable sketches for Cardinality Estimation. We define a class of linearizable sketches and prove that no member of this class can beat \$H\_0/I\_0\$. The popular mergeable sketches are, in fact, also linearizable.},
+  copyright = {arXiv.org perpetual, non-exclusive license},
+  keywords = {Data Structures and Algorithms (cs.DS),FOS: Computer and information sciences,Information Theory (cs.IT)}
+}
+
+@misc{Quin2016,
+  title = {{{LogLog-Beta}} and {{More}}: {{A New Algorithm}} for {{Cardinality Estimation Based}} on {{LogLog Counting}}},
+  shorttitle = {{{LogLog-Beta}} and {{More}}},
+  author = {Qin, Jason and Kim, Denys and Tung, Yumei},
+  year = 2016,
+  publisher = {arXiv},
+  doi = {10.48550/ARXIV.1612.02284},
+  urldate = {2025-12-15},
+  abstract = {The information presented in this paper defines LogLog-Beta. LogLog-Beta is a new algorithm for estimating cardinalities based on LogLog counting. The new algorithm uses only one formula and needs no additional bias corrections for the entire range of cardinalities, therefore, it is more efficient and simpler to implement. Our simulations show that the accuracy provided by the new algorithm is as good as or better than the accuracy provided by either of HyperLogLog or HyperLogLog++. In addition to LogLog-Beta we also provide another one-formula estimator for cardinalities based on order statistics, a modification of an algorithm developed by Lumbroso.},
+  copyright = {arXiv.org perpetual, non-exclusive license},
+  keywords = {68W10 68W15 68W25 62-07,B.2.4; G.1.0; I.1.2; H.2.8,Data Structures and Algorithms (cs.DS),FOS: Computer and information sciences}
+}
+
+@article{redis2025,
+  title = {{{HyperLogLog Docs}}},
+  author = {Redis},
+  year = 2025
+}
+
+@article{redshift2025,
+  title = {Amazon {{Redshift}} Announces Support for {{HyperLogLog}} Sketches},
+  author = {Amazon},
+  year = 2020
+}
+
+@article{repo,
+  title = {{{https://github.com/sbalsam/CardinalityEstimation/}}},
+  author = {Balsam, Sebastian},
+  year = 2025
+}
+
+@article{Scheuermann2007,
+  title = {Near-{{Optimal Compression}} of {{Probabilistic Counting Sketches}} for {{Networking Applications}}},
+  author = {Scheuermann, Bj{\"o}rn and Mauve, Martin},
+  year = 2007
+}
+
+@article{Schwabe2024,
+  title = {Cardinality {{Estimation}} over {{Knowledge Graphs}} with {{Embeddings}} and {{Graph Neural Networks}}},
+  author = {Schwabe, Tim and Acosta, Maribel},
+  year = 2024,
+  month = mar,
+  journal = {Proceedings of the ACM on Management of Data},
+  volume = {2},
+  number = {1},
+  pages = {1--26},
+  issn = {2836-6573},
+  doi = {10.1145/3639299},
+  urldate = {2025-12-15},
+  abstract = {Cardinality Estimation over Knowledge Graphs (KG) is crucial for query optimization, yet remains a challenging task due to the semi-structured nature and complex correlations of data in typical KGs. In this work, we propose GNCE, a novel approach that leverages knowledge graph embeddings and Graph Neural Networks (GNN) to accurately predict the cardinality of conjunctive queries over KGs. GNCE first creates semantically meaningful embeddings for all entities in the KG, which are then used to learn a representation of a query using a GNN to estimate the cardinality of the query. We evaluate GNCE on several KGs in terms of q-Error and demonstrate that it outperforms state-of-the-art approaches based on sampling, summaries, and (machine) learning in terms of estimation accuracy while also having a low execution time and few parameters. Additionally, we show that GNCE performs similarly well on real-world queries and can inductively generalize to unseen entities, making it suitable for use in dynamic query processing scenarios. Our proposed approach has the potential to significantly improve query optimization and related applications that rely on accurate cardinality estimates of conjunctive queries.},
+  copyright = {https://www.acm.org/publications/policies/copyright\_policy\#Background},
+  langid = {english}
+}
+
+@inproceedings{Ting2014,
+  title = {Streamed Approximate Counting of Distinct Elements: Beating Optimal Batch Methods},
+  shorttitle = {Streamed Approximate Counting of Distinct Elements},
+  booktitle = {Proceedings of the 20th {{ACM SIGKDD}} International Conference on {{Knowledge}} Discovery and Data Mining},
+  author = {Ting, Daniel},
+  year = 2014,
+  month = aug,
+  pages = {442--451},
+  publisher = {ACM},
+  address = {New York New York USA},
+  doi = {10.1145/2623330.2623669},
+  urldate = {2025-12-15},
+  isbn = {978-1-4503-2956-9},
+  langid = {english}
+}
+
+@inproceedings{Wang2023,
+  title = {Better {{Cardinality Estimators}} for {{HyperLogLog}}, {{PCSA}}, and {{Beyond}}},
+  booktitle = {Proceedings of the 42nd {{ACM SIGMOD-SIGACT-SIGAI Symposium}} on {{Principles}} of {{Database Systems}}},
+  author = {Wang, Dingyu and Pettie, Seth},
+  year = 2023,
+  month = jun,
+  pages = {317--327},
+  publisher = {ACM},
+  address = {Seattle WA USA},
+  doi = {10.1145/3584372.3588680},
+  urldate = {2025-12-15},
+  isbn = {979-8-4007-0127-6},
+  langid = {english}
+}
+
+@inproceedings{Woltmann2019,
+  title = {Cardinality Estimation with Local Deep Learning Models},
+  booktitle = {Proceedings of the {{Second International Workshop}} on {{Exploiting Artificial Intelligence Techniques}} for {{Data Management}}},
+  author = {Woltmann, Lucas and Hartmann, Claudio and Thiele, Maik and Habich, Dirk and Lehner, Wolfgang},
+  year = 2019,
+  month = jul,
+  pages = {1--8},
+  publisher = {ACM},
+  address = {Amsterdam Netherlands},
+  doi = {10.1145/3329859.3329875},
+  urldate = {2025-12-15},
+  isbn = {978-1-4503-6802-5},
+  langid = {english},
+  file = {C:\Users\sebas\Zotero\storage\WTS6L98M\Woltmann et al. - 2019 - Cardinality estimation with local deep learning models.pdf}
+}
+
+@inproceedings{Xuao2017,
+  title = {Better with Fewer Bits: {{Improving}} the Performance of Cardinality Estimation of Large Data Streams},
+  shorttitle = {Better with Fewer Bits},
+  booktitle = {{{IEEE INFOCOM}} 2017 - {{IEEE Conference}} on {{Computer Communications}}},
+  author = {Xiao, Qingjun and Zhou, You and Chen, Shigang},
+  year = 2017,
+  month = may,
+  pages = {1--9},
+  publisher = {IEEE},
+  address = {Atlanta, GA, USA},
+  doi = {10.1109/INFOCOM.2017.8057088},
+  urldate = {2025-12-15},
+  isbn = {978-1-5090-5336-0}
+}

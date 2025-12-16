@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.20)  15 DEC 2025 10:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.20)  16 DEC 2025 01:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -775,23 +775,7 @@ LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 5
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-(./cardinalityEstimation.aux
-
-LaTeX Warning: Label `fig:hllspike' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:hllspike' multiply defined.
-
-
-LaTeX Warning: Label `fig:llbetaspike' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:llbetaspike' multiply defined.
-
-
-LaTeX Warning: Label `fig:hll_spike' multiply defined.
-
-)
+(./cardinalityEstimation.aux)
 \openout1 = `cardinalityEstimation.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
@@ -997,18 +981,13 @@ File: llbeta_16380.pdf Graphic file (type pdf)
 <use llbeta_16380.pdf>
 Package pdftex.def Info: llbeta_16380.pdf  used on input line 411.
 (pdftex.def)             Requested size: 224.39662pt x 168.29729pt.
-
-
-LaTeX Warning: Reference `fig:histogram' on page 4 undefined on input line 495.
-
-
-[4 <./hll_256.pdf>]
-<llbeta_histogram.pdf, id=251, 462.52798pt x 346.89601pt>
+ [4 <./hll_256.pdf>]
+<llbeta_histogram.pdf, id=252, 462.52798pt x 346.89601pt>
 File: llbeta_histogram.pdf Graphic file (type pdf)
 <use llbeta_histogram.pdf>
 Package pdftex.def Info: llbeta_histogram.pdf  used on input line 513.
 (pdftex.def)             Requested size: 112.1983pt x 84.146pt.
-<llbeta_histogram_log.pdf, id=252, 462.52798pt x 346.89601pt>
+<llbeta_histogram_log.pdf, id=253, 462.52798pt x 346.89601pt>
 File: llbeta_histogram_log.pdf Graphic file (type pdf)
 <use llbeta_histogram_log.pdf>
 Package pdftex.def Info: llbeta_histogram_log.pdf  used on input line 519.
@@ -1018,7 +997,7 @@ Overfull \hbox (4.99998pt too wide) in paragraph at lines 511--528
 []$[]$$[]$ 
  []
 
-<martingale.pdf, id=256, 722.7pt x 361.35pt>
+<martingale.pdf, id=257, 722.7pt x 361.35pt>
 File: martingale.pdf Graphic file (type pdf)
 <use martingale.pdf>
 Package pdftex.def Info: martingale.pdf  used on input line 572.
@@ -1034,71 +1013,61 @@ Underfull \hbox (badness 5260) in paragraph at lines 599--611
 \OT1/lmr/m/n/9 (+20) Ohayon[[]] pub-lished Ex-tend-ed-Hy-per-LogLoc
  []
 
-<mse.pdf, id=386, 722.7pt x 361.35pt>
+<mse.pdf, id=387, 722.7pt x 361.35pt>
 File: mse.pdf Graphic file (type pdf)
 <use mse.pdf>
 Package pdftex.def Info: mse.pdf  used on input line 667.
 (pdftex.def)             Requested size: 244.33128pt x 122.16264pt.
-<hll.pdf, id=388, 617.30624pt x 213.79875pt>
+<hll.pdf, id=389, 617.30624pt x 213.79875pt>
 File: hll.pdf Graphic file (type pdf)
 <use hll.pdf>
 Package pdftex.def Info: hll.pdf  used on input line 682.
 (pdftex.def)             Requested size: 244.33128pt x 84.62083pt.
 [6 <./martingale.pdf>] [7 <./mse.pdf> <./hll.pdf>] (./cardinalityEstimation.bbl
-LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 
-9.
-(/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
-File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `lmtt' (encoding: OT1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 9.
 
-Underfull \hbox (badness 1221) in paragraph at lines 34--37
-[]\OT1/lmr/m/n/8 (+20) Flajolet, Fusy, Gan-douet, and Me-u-nier
+Underfull \hbox (badness 10000) in paragraph at lines 8--10
+[]\OT1/lmr/m/n/8 (+20) Balsam, S. (2025).
  []
 
+LaTeX Font Info:    Trying to load font information for OMS+lmr on input line 5
+3.
+(/usr/share/texmf/tex/latex/lm/omslmr.fd
+File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <8> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 53.
 ) [8] (./cardinalityEstimation.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `cardinalityEstimation.out' has not changed.
 (rerunfilecheck)             Checksum: 356C192F6ECC149E778FA572BD7740E4;1151.
  ) 
 Here is how much of TeX's memory you used:
- 26300 strings out of 480121
- 506709 string characters out of 5892160
- 891870 words of memory out of 5000000
- 43599 multiletter control sequences out of 15000+600000
- 514585 words of font info for 136 fonts, out of 8000000 for 9000
+ 26302 strings out of 480121
+ 506553 string characters out of 5892160
+ 892330 words of memory out of 5000000
+ 43575 multiletter control sequences out of 15000+600000
+ 519289 words of font info for 147 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  84i,10n,89p,1014b,995s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/share/texmf/fonts/enc/
-dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sha
-re/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/
-lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmsc.enc}</usr/share/texm
-f/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
-9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi5.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on cardinalityEstimation.pdf (8 pages, 744961 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/l
+m/lm-rmsc.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmc
+sc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/f
+onts/type1/public/lm/lmmi5.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf
+/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on cardinalityEstimation.pdf (8 pages, 751348 bytes).
 PDF statistics:
- 591 PDF objects out of 1000 (max. 8388607)
+ 593 PDF objects out of 1000 (max. 8388607)
  283 compressed objects within 3 object streams
  57 named destinations out of 1000 (max. 500000)
- 23180 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 24716 words of extra memory for PDF output out of 24883 (max. 10000000)
 

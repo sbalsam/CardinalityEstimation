@@ -7,63 +7,48 @@ Warning--empty journal in redshift2025
 Warning--empty journal in repo
 Warning--empty journal in cvm2023
 Warning--empty journal in dragonfly2025
-Warning--empty journal in Durand2003
-Warning--empty journal in Ertl2024
-Warning--empty journal in Ertl2025
-Warning--empty journal in Flajolet2007
-Warning--empty journal in fm85
-Warning--empty journal in Heule2013
-Warning--empty journal in Liu2015
-Warning--empty journal in Ohayon2021
-Warning--empty journal in Pettie2020
-Warning--empty journal in Qin2016
+Warning--empty journal in Apache2019
 Warning--empty journal in redis2025
 Warning--empty journal in Scheuermann2007
-Warning--empty journal in Schwabe2024
-Warning--empty journal in Apache2019
-Warning--empty journal in Ting2014
-Warning--empty journal in Wang2023
-Warning--empty journal in Woltmann2019
-Warning--empty journal in Xuao2017
 You've used 22 entries,
             1935 wiz_defined-function locations,
-            566 strings with 6095 characters,
-and the built_in function-call counts, 6688 in all, are:
-= -- 597
-> -- 292
-< -- 15
-+ -- 94
-- -- 94
-* -- 522
-:= -- 1257
-add.period$ -- 44
+            605 strings with 7787 characters,
+and the built_in function-call counts, 8406 in all, are:
+= -- 840
+> -- 309
+< -- 23
++ -- 99
+- -- 99
+* -- 650
+:= -- 1444
+add.period$ -- 61
 call.type$ -- 22
 change.case$ -- 157
 chr.to.int$ -- 22
-cite$ -- 44
-duplicate$ -- 286
-empty$ -- 441
-format.name$ -- 128
-if$ -- 1229
+cite$ -- 29
+duplicate$ -- 362
+empty$ -- 592
+format.name$ -- 133
+if$ -- 1685
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 22
-newline$ -- 91
-num.names$ -- 66
-pop$ -- 186
+missing$ -- 18
+newline$ -- 102
+num.names$ -- 68
+pop$ -- 155
 preamble$ -- 1
 purify$ -- 157
 quote$ -- 0
-skip$ -- 236
+skip$ -- 292
 stack$ -- 0
-substring$ -- 264
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 532
+swap$ -- 65
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 132
-warning$ -- 22
-while$ -- 44
+warning$ -- 7
+while$ -- 73
 width$ -- 0
-write$ -- 222
-(There were 22 warnings)
+write$ -- 268
+(There were 7 warnings)
